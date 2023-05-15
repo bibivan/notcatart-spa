@@ -1,0 +1,34 @@
+.demo {
+  background-color: $color-white;
+
+  &__title {
+    text-align: center;
+    color: $color-black;
+  }
+
+  &__content {
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__img {
+    display: block;
+    margin-bottom: 80px;
+
+    @include portable {
+      margin-bottom: 60px;
+    }
+
+    @include only-mobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__btn {
+
+  }
+}

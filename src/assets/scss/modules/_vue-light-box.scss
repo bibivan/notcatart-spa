@@ -1,0 +1,84 @@
+@import '../core/variables';
+
+.vel-modal {
+  background: #000 !important;
+}
+
+.vel-img {
+  cursor: auto;
+}
+
+.vue-lightbox {
+  &__close-btn {
+    display: none;
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    z-index: 10060;
+    margin-top: -14px;
+    margin-right: -14px;
+    height: 44px;
+    width: 44px;
+    border: 0;
+    line-height: 44px;
+    font-family: $sl-font-family;
+    color: $sl-navigation-color;
+    font-size: $sl-close-fontsize;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__btn {
+    position: fixed;
+    top: 50%;
+    margin-top: -22px;
+    height: 44px;
+    width: 22px;
+    line-height: 44px;
+    text-align: center;
+    display: block;
+    z-index: 10060;
+    border: 0;
+    font-family: $sl-font-family;
+    color: $sl-navigation-color;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--next {
+      right: 5px;
+      font-size: $sl-arrow-fontsize-small;
+    }
+
+    &--prev {
+      left: 5px;
+      font-size: $sl-arrow-fontsize-small;
+    }
+
+    @media (min-width: $sl-breakpoint-medium) {
+      width: 44px;
+
+      &--next {
+        right: 10px;
+        font-size: $sl-arrow-fontsize-medium;
+      }
+
+      &--prev {
+        left: 10px;
+        font-size: $sl-arrow-fontsize-medium;
+      }
+    }
+    @media (min-width: $sl-breakpoint-large) {
+      width: 44px;
+
+      &--next {
+        right: 20px;
+        font-size: $sl-arrow-fontsize-large;
+      }
+
+      &--prev {
+        left: 20px;
+        font-size: $sl-arrow-fontsize-large;
+      }
+    }
+  }
+}

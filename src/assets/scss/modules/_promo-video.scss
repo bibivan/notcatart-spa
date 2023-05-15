@@ -1,0 +1,92 @@
+.promo-video {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  max-width: 960px;
+
+  &::before {
+    content: '';
+    padding-top: 56.25%;
+  }
+
+  &__wrapper {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__overlay {
+    position: relative;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s ease-in-out;
+
+    &--hide {
+      opacity: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      //display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(121,121,121,1) 0%, rgba(255,255,255,0) 65%);
+    }
+  }
+
+  &__text {
+    position: absolute;
+    left: 45px;
+    top: 25px;
+    z-index: 3;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.35;
+    color: $color-white;
+
+    @include only-mobile {
+      left: 10px;
+      top: 10px;
+      font-size: 16px;
+    }
+  }
+
+  &__cover {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__start-btn {
+    position: absolute;
+    z-index: 4;
+    left: calc(50% - 45px);
+    top: calc(50% - 45px);
+    width: 90px;
+    height: 90px;
+    //background: url('../img/icons/play.svg') center / contain no-repeat;
+  }
+}

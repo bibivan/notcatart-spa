@@ -1,0 +1,67 @@
+.product {
+  &__images {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 40px;
+    height: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.35;
+    text-transform: uppercase;
+    color: $color-white;
+  }
+
+  &__caption {
+    margin-top: 4px;
+    margin-bottom: 18px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.55;
+    color: $color-caption;
+  }
+
+  &__cost {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.35;
+    color: $color-primary;
+  }
+
+  &__btn {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    max-width: 105px;
+  }
+
+  &__description {
+    margin-bottom: 1em;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.55;
+    color: $color-caption;
+  }
+
+  &__italic-text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.55;
+    font-style: italic;
+    color: $color-caption;
+  }
+
+  &__note {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.55;
+    color: $color-note;
+  }
+}

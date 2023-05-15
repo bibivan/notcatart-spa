@@ -1,0 +1,29 @@
+.gallery {
+  z-index: 97;
+
+  &__swiper {
+    --swiper-navigation-color: #{$color-white};
+    //--swiper-navigation-sides-offset: -54px;
+    overflow: hidden;
+  }
+
+  &__slide {
+
+
+    &--complex {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    cursor: zoom-in;
+  }
+}

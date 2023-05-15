@@ -1,0 +1,26 @@
+@mixin bg-cover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+$browser-context: 16; // Default
+
+@function rem($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+}
+
+@mixin title {
+  margin-bottom: $section-indent;
+  font-family: $font-base;
+  font-weight: 700;
+  color: $color-text;
+
+  @include only-tablet {
+    margin-bottom: $section-indent-tablet;
+  }
+
+  @include only-mobile {
+    margin-bottom: $section-indent-mobile;
+  }
+}

@@ -1,0 +1,90 @@
+.footer {
+  background-color: $footer-bg-color;
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+
+
+  &__col {
+    padding: 15px;
+    width: 25%;
+
+    @include portable {
+      width: 50%;
+    }
+
+    @include xl-mobile {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+
+  &__socials {
+    margin-bottom: 21px;
+
+    .social__link {
+      width: 25px;
+      height: 25px;
+      opacity: 0.3;
+      transition: opacity 0.15s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: 12px;
+    line-height: 1.55;
+    color: $color-gray-400;
+  }
+}
+
+.menu {
+  &__title {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-primary;
+
+    @include xs-desktop {
+      font-size: 14px;
+    }
+
+    @include portable {
+      font-size: 14px;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: $color-white;
+
+    @include xs-desktop {
+      font-size: 12px;
+    }
+
+    @include portable {
+      font-size: 12px;
+    }
+  }
+}

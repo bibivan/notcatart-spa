@@ -1,0 +1,58 @@
+.header {
+  position: absolute;
+  z-index: $ui-index-3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $section-background;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: $header-height;
+
+    @include only-mobile {
+      height: $header-height-mobile;
+    }
+  }
+
+  &__logo {
+    &:active {
+      color: $color-primary;
+    }
+  }
+
+  &__links {
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    height: 17px;
+    width: auto;
+    color: $color-white;
+    transition: color 0.15s ease-in-out;
+
+   @include desktop {
+     &:hover {
+       color: $color-primary;
+     }
+   }
+
+    &--catalog {
+      margin-right: 25px;
+    }
+  }
+}
+
+.menu-opened {
+  .header {
+    z-index: 121;
+  }
+
+  .mobile-menu {
+    z-index: 120;
+  }
+}

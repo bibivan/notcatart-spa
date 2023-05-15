@@ -1,0 +1,90 @@
+/* stylelint-disable */
+.burger {
+  position: relative;
+  border: none;
+  padding: 0;
+  width: $burger-width;
+  height: $burger-height;
+  color: $color-white;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: $burger-line-height;
+    border-radius: $border-radius-4;
+    background-color: $color-white;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, background-color 0.15s ease-in-out, transform-origin 0.3s ease-in-out;
+
+    @include desktop {
+      &:hover {
+        background-color: $color-primary;
+      }
+    }
+
+    &:active {
+      background-color: $color-primary;
+    }
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: calc(100% - #{$burger-line-height});
+    transform-origin: left;
+    transform: scaleX(0.3);
+  }
+
+
+  @include desktop {
+    &:hover::before, &:hover::after, &:hover &__line {
+      background-color: $color-primary;
+    }
+  }
+
+  &:active::before, &:active::after, &:active &__line {
+    background-color: $color-primary;
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    top: calc(50% - (#{$burger-line-height} / 2));
+    width: 100%;
+    height: $burger-line-height;
+    border-radius: $border-radius-4;
+    background-color: currentColor;
+    transform: scaleX(0.6);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out, background-color 0.15s ease-in-out;
+  }
+
+
+}
+
+.menu-opened {
+  .burger {
+    &::before {
+      transform-origin: center;
+      top: calc(50% - (#{$burger-line-height} / 2));
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform-origin: center;
+      top: calc(50% - (#{$burger-line-height} / 2));
+      transform: rotate(-45deg) scaleX(1);
+    }
+
+    .burger__line {
+      transform: scale(0);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}

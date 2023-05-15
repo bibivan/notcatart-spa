@@ -1,0 +1,100 @@
+$font-base: 'Arial', sans-serif;
+$font-accent: 'Arial Italic', sans-serif;
+
+//color-s
+$color-primary: #e65a2c;
+$color-black: #000;
+$color-black-opacity:transparentize($color-black, 0.8);
+$color-white: #fff;
+$color-white-opacity:transparentize($color-white, 0.9);
+$color-gray-50: #f8f8f8;
+$color-gray-400: #525252;
+$color-gray-700: #2e2929;
+
+
+$color-acadia: #0a0801;
+
+$color-caption: #b0b0b0;
+$color-note: #7c7c7c;
+$color-text-accent: #99847e;
+$color-text: $color-white;
+$color-warning: #ffda45;
+$color-error: #ff2835;
+$color-disclaimer: #b09173;
+
+$color-bg: $color-white;
+$section-background: $color-black;
+$footer-bg-color: #111;
+$sl-overlay-background: $color-black;
+$sl-navigation-color: $color-white;
+$sl-caption-color: $color-black;
+$sl-caption-background: $color-white;
+
+//header heights
+$header-height: 90px;
+$header-height-mobile: 65px;
+
+//burger
+$burger-width: 35px;
+$burger-height: 25px;
+$burger-line-height: 2px;
+
+// z-indexes
+$ui-index-1: 1; // Для наползабщих элементов в общем потоке
+$ui-index-2: 2; // Для наползабщих элементов в общем потоке
+$ui-index-3: 3; // Для наползабщих элементов в общем потоке
+$ui-index-4: 4; // Для масок
+$ui-index-5: 5; // Для сайдбаров
+$ui-index-6: 6; // Для модалок
+$ui-index-6: 7; // Для перекрытия всего
+
+
+//indents
+$indent-4: 4px;
+$indent-5: 5px;
+$indent-8: 8px;
+$indent-10: 10px;
+$indent-12: 12px;
+$indent-16: 16px;
+$indent-20: 20px;
+$indent-24: 24px;
+$indent-28: 26px;
+$indent-32: 32px;
+$indent-36: 36px;
+$indent-40: 40px;
+$indent-44: 44px;
+$indent-48: 48px;
+$indent-60: 60px;
+$indent-80: 80px;
+$indent-100: 100px;
+
+// section paddings
+$section-indent: $indent-80;
+$section-indent-tablet: $indent-60;
+$section-indent-mobile: $indent-40;
+
+//border-radius
+$border-radius-2: 2px;
+$border-radius-4: 4px;
+$border-radius-8: 8px;
+$border-radius-10: 10px;
+$border-radius-11: 11px;
+$border-radius-12: 12px;
+$border-radius-14: 14px;
+$border-radius-18: 18px;
+$border-radius-20: 20px;
+$border-radius-24: 24px;
+$border-radius-32: 32px;
+$border-radius-40: 40px;
+$round: 50%;
+
+
+// vue-light-box
+$sl-font-family: Arial, Baskerville, monospace !default;
+$sl-navigation-color: #fff !default;
+$sl-close-fontsize: 3rem !default;
+$sl-breakpoint-medium: 35.5em !default;
+$sl-breakpoint-large: 50em !default;
+$sl-arrow-fontsize-small: 2rem !default;
+$sl-arrow-fontsize-medium: 3rem !default;
+$sl-arrow-fontsize-large: 3rem !default;

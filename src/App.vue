@@ -1,30 +1,38 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div :class="[ 'app-holder', { 'menu-opened': menuIsOpened }]">
+    <TheHeader @burgerClicked="menuIsOpened = !menuIsOpened"/>
+    <router-view/>
+    <TheFooter/>
+  </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+</style>
+<script>
+import { defineComponent, onMounted, provide, ref } from 'vue'
+import { apiFetch } from '@/helpers/send-requests'
+import renderResponse from '@/helpers/render-response'
+import config from '@/config'
+import TheHeader from '@/components/header/TheHeader'
+import TheFooter from '@/components/footer/TheFooter'
 
-nav {
-  padding: 30px;
+export default defineComponent({
+  components: { TheFooter, TheHeader },
+  setup () {
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0MDUyMjgifQ.zCBOqxmDZp_3VZcvGad0wQ-pPwdhKX4pBDZ93pBjlP8'
+    const menuIsOpened = ref(false)
+    const products = ref()
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    provide('products', products)
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    onMounted(() => apiFetch(config.apiUrl + 'products/get', token)
+      .then(res => { products.value = renderResponse(res) }))
+
+    return { menuIsOpened }
   }
-}
+})
+</script>
+
+<style lang="scss">
+@import "assets/scss/main";
 </style>
