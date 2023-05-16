@@ -137,6 +137,10 @@ a, .link {
   &.transparent {
     background-color: transparent;
   }
+
+  &.bg-white {
+    background-color: $color-white;
+  }
 }
 
 .notcatart {

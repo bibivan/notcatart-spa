@@ -1,0 +1,88 @@
+@import "../core/mediaqueries";
+
+.yamap-logistics {
+  height: 500px;
+  width: 100%;
+  border: 1px solid #eee;
+
+  .ymaps-2-1-79-b-cluster-tabs__section_type_nav {
+    @include sm-mobile {
+      width: 95px !important;
+    }
+  }
+}
+
+.yandex-balloon {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+
+  @include portable {
+    height: 200px;
+    width: 220px;
+  }
+
+  &--in-cluster {
+    width: 100%;
+    height: 150px;
+
+    @include sm-mobile {
+      height: 250px;
+    }
+
+    .yandex-balloon__btn {
+      @include sm-mobile {
+        width: 100px;
+      }
+    }
+  }
+
+  &__body {
+    @include portable {
+      display: flex;
+      flex-direction: column;
+      order: 2;
+    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    @include portable {
+      margin-bottom: 5px;
+      line-height: 16px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    margin-right: 6px;
+    white-space: nowrap;
+  }
+
+  &__btn {
+    margin: auto 0 0 0;
+    padding: 10px 12px;
+    height: 40px;
+    width: 220px;
+    text-align: center;
+    background-color: $color-primary;
+
+
+    @include portable {
+      order: 1;
+      margin: 0 0 15px 0;
+      padding: 5px 6px;
+      height: 26px;
+      width: 140px;
+      line-height: 16px;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+  }
+}

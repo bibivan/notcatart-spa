@@ -1,15 +1,18 @@
 import config from '@/config'
 import dayjs from 'dayjs'
 
-export async function apiFetch (url = '', token = '', payload = {}) {
-  payload.token = token
-  return await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-    .then(res => res.json())
-    .catch(err => { throw err })
+export async function apiFetch (url = '', payload = {}) {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    return res.json()
+  } catch (e) {
+    console.log('Ошибка загрузки данных о продуктах')
+    throw e
+  }
 }
 
 export async function sendOrder (payload) {

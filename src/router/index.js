@@ -39,7 +39,7 @@ const router = createRouter({
       }
     } else {
       return {
-        ...savedPosition,
+        top: 0,
         behavior: 'smooth'
       }
     }

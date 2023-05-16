@@ -47,12 +47,30 @@
   }
 }
 
+.cart-btn {
+  position: relative;
+
+  &__counter {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: $border-rounded;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 100%;
+    color: $color-white;
+    background-color: $color-primary;
+  }
+}
+
 .menu-opened {
   .header {
-    z-index: 121;
-  }
-
-  .mobile-menu {
-    z-index: 120;
+    position: fixed;
   }
 }

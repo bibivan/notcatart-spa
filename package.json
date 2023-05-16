@@ -8,12 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.2",
+    "@vuelidate/validators": "^2.0.2",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.7",
+    "inputmask": "^5.0.8",
     "swiper": "^9.3.2",
     "vue": "^3.2.13",
     "vue-easy-lightbox": "^1.16.0",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue-yandex-maps": "^1.0.4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

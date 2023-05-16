@@ -64,19 +64,34 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1320px;
-  padding: 0 20px;
+  max-width: 1330px;
+  padding: $container-indent;
   margin: 0 auto;
 
   @include portable {
     max-width: 100%;
-    padding: 0 15px;
+  }
+
+  @include only-mobile {
+    padding: $container-indent-mobile;
   }
 }
 
 .app-holder {
   position: relative;
   padding-top: $header-height;
+
+  &::before {
+    content: '';
+    position: fixed;
+    z-index: $ui-index-1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: background-color 0.7s ease-in-out;
+  }
 
   @include only-mobile {
     padding-top: $header-height-mobile;

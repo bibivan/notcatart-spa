@@ -7,7 +7,7 @@
       :spaceBetween="50"
     >
       <SwiperSlide
-        v-for="img in images"
+        v-for="(img, index) in images"
         :key="'img: ' + img"
       >
         <div class="product-images-swiper__wrapper-img">
@@ -16,7 +16,7 @@
             loading="lazy"
             alt="изображение товара"
             class="product-images-swiper__img"
-            @click="showMultiple"
+            @click="showMultiple(index)"
           >
         </div>
       </SwiperSlide>
@@ -27,19 +27,19 @@
       :imgs="images"
       :index="indexRef"
       :loop="true"
+      :scrollDisabled="false"
       :moveDisabled="true"
-      teleport=".body"
       @hide="onHide"
     >
-      <template v-slot:prev-btn="{ prev }">
+      <template v-slot:prevBtn="{ prev }">
         <button class="vue-lightbox__btn vue-lightbox__btn--prev" style="display: block;" @click="prev">‹</button>
       </template>
 
-      <template v-slot:next-btn="{ next }">
+      <template v-slot:nextBtn="{ next }">
         <button class="vue-lightbox__btn vue-lightbox__btn--next" style="display: block;" @click="next">›</button>
       </template>
 
-      <template v-slot:close-btn="{ close }">
+      <template v-slot:closeBtn="{ close }">
         <button class="vue-lightbox__close-btn" style="opacity: 1; display: block;" @click="close">×</button>
       </template>
 
@@ -56,6 +56,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import { showScroll, hideScroll } from '@/helpers/control-scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper'
 
@@ -71,12 +72,14 @@ export default defineComponent({
   setup () {
     const indexRef = ref(0)
     const isVisible = ref(false)
-    const showMultiple = () => {
-      indexRef.value = 0 // index of imgList
+    const showMultiple = index => {
+      hideScroll()
+      indexRef.value = index // index of imgList
       isVisible.value = true
     }
     const onHide = () => {
       isVisible.value = false
+      setTimeout(() => showScroll(), 300)
     }
 
     return {

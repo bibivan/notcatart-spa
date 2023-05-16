@@ -1,0 +1,19 @@
+.pickup-points-filter {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 14px;
+    padding: 2px;
+    margin-bottom: 5px;
+    background-color: $color-white;
+    border: 1px solid $color-black;
+    border-radius: 2px;
+  }
+
+  &__select {
+    padding: 5px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}

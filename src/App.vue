@@ -1,34 +1,44 @@
 <template>
   <div :class="[ 'app-holder', { 'menu-opened': menuIsOpened }]">
-    <TheHeader @burgerClicked="menuIsOpened = !menuIsOpened"/>
+    <TheHeader
+      @burgerClicked="menuIsOpened = !menuIsOpened"
+      @closeMenu="menuIsOpened = false"
+    />
     <router-view/>
     <TheFooter/>
+    <Transition name="translate-x">
+      <MainMenu
+        v-show="menuIsOpened"
+        @closeMenu="menuIsOpened = false"
+      />
+    </Transition>
   </div>
 </template>
 
 <style lang="scss">
 </style>
 <script>
-import { defineComponent, onMounted, provide, ref } from 'vue'
-import { apiFetch } from '@/helpers/send-requests'
-import renderResponse from '@/helpers/render-response'
-import config from '@/config'
+import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import TheHeader from '@/components/header/TheHeader'
 import TheFooter from '@/components/footer/TheFooter'
+import MainMenu from '@/components/MainMenu/MainMenu'
+import { useStore } from 'vuex'
 
 export default defineComponent({
-  components: { TheFooter, TheHeader },
+  components: { MainMenu, TheFooter, TheHeader },
   setup () {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0MDUyMjgifQ.zCBOqxmDZp_3VZcvGad0wQ-pPwdhKX4pBDZ93pBjlP8'
     const menuIsOpened = ref(false)
-    const products = ref()
+    const store = useStore()
 
-    provide('products', products)
+    // установка нового токена
+    const token = computed(() => store.getters.getToken)
+    const setProperties = data => store.commit('setToken', data.token)
+    watch(token, () => store.dispatch('loadProducts'))
 
-    onMounted(() => apiFetch(config.apiUrl + 'products/get', token)
-      .then(res => { products.value = renderResponse(res) }))
+    // инициализация приложения
+    onMounted(() => store.commit('setCartContent'))
 
-    return { menuIsOpened }
+    return { menuIsOpened, setProperties }
   }
 })
 </script>
