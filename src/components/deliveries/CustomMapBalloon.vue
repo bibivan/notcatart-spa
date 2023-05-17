@@ -14,7 +14,7 @@
     </div>
   </div>
   <button @click.prevent="onEmitPoint(pickupPoint)"
-          :class="['btn yandex-balloon__btn', { 'btn--disabled': btnDisabled }]"
+          :class="['btn yandex-balloon__btn btn-reset', { 'btn--disabled': btnDisabled }]"
           :disabled="btnDisabled">
     <template v-if="!btnDisabled"> Доставить сюда </template>
     <template v-if="btnDisabled"> Выбрано </template>

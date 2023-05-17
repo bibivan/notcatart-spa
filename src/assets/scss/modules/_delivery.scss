@@ -1,5 +1,5 @@
 .delivery-type {
-  margin: 0 0 25px 0;
+  margin: 0 0 40px 0;
 
   &__head {
     margin: 0 0 15px 0;
@@ -7,11 +7,22 @@
 
   &__tabs {
     display: flex;
+    margin-bottom: 35px;
+
+    @include only-mobile {
+      margin-bottom: 20px;
+      flex-direction: column;
+    }
   }
 
   &__title {
-    margin-bottom: 8px;
-    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 400;
+    color: $color-black;
+
+    @include only-mobile {
+      margin-bottom: 15px;
+    }
   }
 
   &__tab {
@@ -19,29 +30,32 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
-    min-width: 200px;
-    min-height: 40px;
+    min-width: 240px;
+    min-height: 60px;
     border: 1px solid $color-black;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
     color: $color-black;
 
     @include only-mobile {
-      min-width: 50%;
+      min-width: auto;
+      width: 100%;
+      min-height: 55px;
     }
 
     &--first {
       border-right: 0;
 
-      @include xs-mobile {
+      @include only-mobile {
         border-right: 1px solid $color-black;
         border-bottom: 0;
       }
     }
 
     &--active {
-      background-color: $color-white-opacity;
+      background-color: $color-black;
+      color: $color-white;
     }
   }
 
@@ -54,6 +68,12 @@
     z-index: 12;
     top: 10px;
     left: 10px;
+  }
+
+  &__message {
+    margin: 0;
+    font-weight: 400;
+    color: $color-error;
   }
 
   &__error {

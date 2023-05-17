@@ -1,6 +1,10 @@
 .product-images-swiper {
   position: relative;
 
+  .vel-modal {
+    background: $color-black !important;
+  }
+
   .swiper {
     width: 100%;
   }
@@ -44,3 +48,4 @@
     background-color: $color-primary;
   }
 }
+

@@ -4,7 +4,7 @@
       <div class="container">
         <div class="hero__content">
           <h1 class="visually-hidden">notcatart</h1>
-          <h2 class="hero__title">NEW </h2>
+          <h2 class="h1 hero__title">NEW </h2>
           <p class="hero__description">
             <span>ПАЛЕТКИ ТЕНЕЙ</span>
             <span>от

@@ -1,6 +1,12 @@
 <template>
-  <YandexMap v-if="!$_.isEmpty(order.ADDRESS)"
-             @created="setMapInstance"
+  <h4
+    v-if="$_.isEmpty(markersData) && !$_.isEmpty(order.addressData)"
+    class="delivery-type__message"
+  >
+    Нет точек доставки в данном населенном пункте
+  </h4>
+  <YandexMap v-else-if="!$_.isEmpty(order.ADDRESS)"
+             v-bind="$attrs"
              :settings="{
                  apiKey: 'd728cd3a-9125-46c7-b2dc-3995d38840cc',
                  lang: 'ru_RU',
@@ -10,7 +16,8 @@
                }"
              :controls="['zoomControl']"
              :coordinates="[order.addressData.data.geo_lat, order.addressData.data.geo_lon]"
-             class="yamap-logistics">
+             class="yamap-logistics"
+             @created="setMapInstance">
     <YandexClusterer v-if="!$_.isEmpty(markersData)"
                      :key="markersData.length + markersData[0]?.gps[0] + markersData[markersData.length - 1].gps[0]"
                      :options="{ preset: 'islands#blackClusterIcons' }">
@@ -20,8 +27,7 @@
                     :marker-id="'placemark' + index"
                     :properties="getMarkerProperties(point, index)"
                     :options="{
-                      preset: 'islands#blueDeliveryIcon',
-                      iconColor: 'black'
+                      preset: 'islands#blackDeliveryIcon'
                     }">
         <template #component>
           <CustomMapBalloon :pickupPoint="point" :order="order"/>
@@ -58,14 +64,14 @@ export default defineComponent({
     order: Object,
     markersData: [Object, Array]
   },
-  setup (props, { emit }) {
+  setup (props) {
     let mapInstance
     const smallMobileWidth = 375
     const currentOrder = toRef(props, 'order')
 
     const setMapInstance = (map) => {
       mapInstance = map
-      setMapCenter(10)
+      setMapCenter(12)
       initBtnEvenListeners()
     }
 
@@ -82,7 +88,7 @@ export default defineComponent({
             <span class="yandex-balloon__text">${point.address}</span>
           </div>
         </div>
-        <button class="btn yandex-balloon__btn" data-pickup-point-index="${index}">
+        <button class="btn yandex-balloon__btn btn-reset" data-pickup-point-index="${index}">
             ${window.innerWidth > smallMobileWidth ? 'Доставить сюда' : 'выбрать'}
         </button>
       </div>`

@@ -13,6 +13,8 @@
     description="Максимум пигментации. В палетках ты найдёшь разные текстуры.  Всего их четыре вида: матовые, воздушно-кремовые, шиммерные и глиттерная. Бархатные палетки так и просятся к тебе в руки! Их хочется гладить бесконечно. Обрати внимание на названия: мы уверены, что они западут в твое сердечко, потому что сделаны со смыслом, отражающим оттенки"
   />
   <ProductItem v-if="!$_.isEmpty(products)" :product="products[1]"/>
+  <PromoVideoSection/>
+  <GetCoursesSection/>
 </template>
 
 <script>
@@ -22,10 +24,12 @@ import DemoSection from '@/components/sections/DemoSection'
 import SomeInfoSection from '@/components/sections/SomeInfoSection'
 import ProductItem from '@/components/products/ProductItem'
 import { useStore } from 'vuex'
+import PromoVideoSection from '@/components/sections/PromoVideoSection'
+import GetCoursesSection from '@/components/sections/CourseAdvertisingSection'
 
 export default defineComponent({
   name: 'HomeView',
-  components: { ProductItem, DemoSection, HeroSection, SomeInfoSection },
+  components: { GetCoursesSection, PromoVideoSection, ProductItem, DemoSection, HeroSection, SomeInfoSection },
   setup () {
     const store = useStore()
     const products = computed(() => store.getters.getProducts)

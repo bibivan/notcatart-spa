@@ -8,6 +8,7 @@
       >Фильтровать по компании
       </label>
       <select
+        v-if="!$_.isEmpty(state.displayedPoints)"
         v-model="state.filterByCompany"
         id="pickup_points_filter"
         class="pickup-points-filter__select"
@@ -22,9 +23,7 @@
         </option>
       </select>
     </div>
-    <div v-if="$_.isEmpty(state.displayedPoints)"> Нет точек доставки в данном населенном пункте </div>
     <YaMapComponent
-      v-else
       :order="order"
       :markersData="state.displayedPoints"
     />

@@ -1,6 +1,7 @@
 <template>
   <form class="form-checkout">
-    <h1 class="form-checkout__title">/ Оформление заказа</h1>
+    <h1 class="visually-hidden">Оформление заказа</h1>
+    <h2 class="h2 form-checkout__title">/ Оформление заказа</h2>
     <div class="form-checkout__inputs">
       <div class="grid grid--wrap">
         <div class="grid__col grid__col--w-50-tab-to-desk">
@@ -51,18 +52,22 @@
       :order="currentOrder"
     />
     <PaymentType :order="order"/>
-    <div class="btn-block">
+    <div class="btn-block form-checkout__submit">
       <button
-        class="btn form-checkout__btn"
+        class="btn btn-reset form-checkout__btn"
         @click.prevent="onSendData"
-      >Отправить</button>
+      >ОФОРМИТЬ ЗАКАЗ</button>
       <ErrorMessage
         v-if="currentOrder.COURIER_DELIVERY"
         :errorInstance="v$"
         validatedProperty="addressData"
       />
       <ErrorMessage
-        v-else
+        v-if="!$_.isEmpty(currentOrder.addressData)"
+        :errorInstance="v$"
+        validatedProperty="pickedCourier"
+      />
+      <ErrorMessage
         :errorInstance="v$"
         validatedProperty="pickupPoint"
       />

@@ -6,9 +6,9 @@
   <div class="grid__col some-info__outer-text">
     <div class="section some-info__inner-text">
       <div class="some-info__text">
-        <div class="some-info__headline">
+        <h2 class="some-info__headline">
           {{ headline }}
-        </div>
+        </h2>
         <div class="some-info__description">
           {{ description }}
         </div>

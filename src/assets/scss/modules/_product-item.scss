@@ -26,21 +26,11 @@
 
   &__title {
     margin-bottom: 10px;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 46px;
     text-transform: uppercase;
     color: $color-white;
 
-    @include only-tablet {
-      font-size: 30px;
-      line-height: 34px;
-    }
-
     @include only-mobile {
       margin-bottom: 5px;
-      font-size: 25px;
-      line-height: 29px;
     }
   }
 

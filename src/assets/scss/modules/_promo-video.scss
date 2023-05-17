@@ -1,8 +1,9 @@
 .promo-video {
   position: relative;
   display: flex;
+  padding: 0;
   margin: 0 auto;
-  max-width: 960px;
+  width: 100%;
 
   &::before {
     content: '';
@@ -28,7 +29,7 @@
 
   &__overlay {
     position: relative;
-    z-index: 5;
+    z-index: $ui-index-6;
     left: 0;
     top: 0;
     width: 100%;
@@ -42,7 +43,7 @@
     &::before {
       content: '';
       position: absolute;
-      z-index: 2;
+      z-index: $ui-index-2;
       left: 0;
       top: 0;
       //display: block;
@@ -56,7 +57,7 @@
     position: absolute;
     left: 45px;
     top: 25px;
-    z-index: 3;
+    z-index: $ui-index-3;
     margin: 0;
     font-size: 24px;
     line-height: 1.35;
@@ -71,7 +72,7 @@
 
   &__cover {
     position: absolute;
-    z-index: 1;
+    z-index: $ui-index-1;
     left: 0;
     top: 0;
     width: 100%;
@@ -82,11 +83,23 @@
 
   &__start-btn {
     position: absolute;
-    z-index: 4;
+    z-index: $ui-index-4;
     left: calc(50% - 45px);
     top: calc(50% - 45px);
     width: 90px;
     height: 90px;
-    //background: url('../img/icons/play.svg') center / contain no-repeat;
+    border-radius: $border-rounded;
+    background-color: $color-primary;
+
+    svg {
+      position: absolute;
+      z-index: $ui-index-5;
+      left: calc(50% - 15px);
+      top: calc(50% - 20px);
+      display: block;
+      width: 40px;
+      height: 40px;
+      color: $color-white;
+    }
   }
 }

@@ -13,7 +13,6 @@ $browser-context: 16; // Default
 @mixin title {
   margin-bottom: $section-indent;
   font-family: $font-base;
-  font-weight: 700;
   color: $color-text;
 
   @include only-tablet {

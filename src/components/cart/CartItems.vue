@@ -29,17 +29,17 @@
       </div>
     </div>
     <div class="cart__costs">
-      <div class="cart__cost cart__cost--products">
+      <div class="h4 cart__cost cart__cost--products">
         Стоимость товаров <span>{{ order.PRICE }} ₽</span>
       </div>
-      <div class="cart__cost cart__cost--delivery">
+      <div class="h4 cart__cost cart__cost--delivery">
         Доставка <span>{{ order.DELIVERY_PRICE ? (order.DELIVERY_PRICE + ' ₽') : 'Не выбрано' }}</span>
       </div>
-      <div class="cart__cost cart__cost--total">
-        Итого: <span class="cart__cost--sum">{{ totalCost }} ₽</span>
+      <div class="h3 cart__cost cart__cost--total">
+        Итого: <span class="h3 cart__cost--sum">{{ totalCost }} ₽</span>
       </div>
     </div>
-    <button class="btn btn-reset cart__submit">Оформить заказ</button>
+<!--    <button class="btn btn-reset cart__submit">Оформить заказ</button>-->
   </div>
 </template>
 
@@ -66,18 +66,18 @@ export default defineComponent({
     })
 
     const deleteProductItem = index => store.commit('deleteItemFromCart', index)
+
     const changeProductAmount = (item, isIncrease) => {
       const updatedItem = { ...item }
+
       isIncrease ? ++updatedItem.CNT : --updatedItem.CNT
-      if (!updatedItem.CNT) updatedItem.CNT = 1
+      updatedItem.CNT = updatedItem.CNT ? updatedItem.CNT : 1
       store.commit('addItemToCart', updatedItem)
     }
 
     return { totalCost, currentOrder, deleteProductItem, changeProductAmount }
   }
 })
-// increase the amount
-// reduce the amount
 </script>
 
 <style scoped>

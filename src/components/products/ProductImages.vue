@@ -27,8 +27,6 @@
       :imgs="images"
       :index="indexRef"
       :loop="true"
-      :scrollDisabled="false"
-      :moveDisabled="true"
       @hide="onHide"
     >
       <template v-slot:prevBtn="{ prev }">

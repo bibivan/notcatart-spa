@@ -2,14 +2,14 @@
   display: flex;
   align-content: space-between;
   justify-content: space-between;
-  margin: -12px;
+  margin: -15px;
 
   @include only-mobile {
     flex-direction: column;
     margin: -10px;
   }
 
-  &--lg-gap {
+  &--xl-gap {
     margin: -40px;
 
     @include only-tablet {
@@ -25,7 +25,7 @@
     }
   }
 
-  &--xl-gap {
+  &--xxl-gap {
     margin: -80px;
 
     @include only-tablet {
@@ -66,7 +66,7 @@
   &__col {
     display: flex;
     align-items: stretch;
-    padding: 12px;
+    padding: 15px;
     width: 100%;
 
     @include desktop {
@@ -84,6 +84,29 @@
       }
 
       &--w-100-desktop {
+        width: 100%;
+      }
+    }
+
+    @include tablet {
+
+      &--w-25-tab-to-desk {
+        width: 25%;
+      }
+
+      &--w-33-tab-to-desk {
+        width: 33.333333%;
+      }
+
+      &--w-50-tab-to-desk {
+        width: 50%;
+      }
+
+      &--w-67-tab-to-desk {
+        width: 66.666667%;
+      }
+
+      &--w-100-tab-to-desk {
         width: 100%;
       }
     }

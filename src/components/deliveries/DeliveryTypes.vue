@@ -5,32 +5,28 @@
       <div class="delivery-type__tabs">
         <button
           :class="['delivery-type__tab delivery-type__tab--first btn-reset',
-          { 'delivery-type__tab--active': !currentOrder.COURIER_DELIVERY }]"
-          @click.prevent="currentOrder.COURIER_DELIVERY = false"
-        >
-          Пункт выдачи
-        </button>
-        <button
-          :class="['delivery-type__tab btn-reset',
           {'delivery-type__tab--active': currentOrder.COURIER_DELIVERY }]"
           @click.prevent="currentOrder.COURIER_DELIVERY = true"
         >
           Курьер
         </button>
+        <button
+          :class="['delivery-type__tab btn-reset',
+          { 'delivery-type__tab--active': !currentOrder.COURIER_DELIVERY }]"
+          @click.prevent="currentOrder.COURIER_DELIVERY = false"
+        >
+          Пункт выдачи
+        </button>
       </div>
     </div>
 
     <div class="delivery-type__body">
-<!--      <div-->
-<!--          v-if="$_.isEmpty(order.addressData)"-->
-<!--          class="delivery-type__error"-->
-<!--      >для отображения компаний и вариантов доставки выберите адрес</div>-->
       <PickupPoints
-        v-if="!currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.pickupPoints)"
+        v-show="!currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.pickupPoints)"
         :order="currentOrder"
       />
       <CourierCompanies
-          v-if="currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.couriersServices)"
+          v-show="currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.couriersServices)"
           :order="currentOrder"
       />
     </div>
@@ -73,9 +69,9 @@ export default defineComponent({
         let response
         if (fias) {
           response = await apiFetch(config.apiUrl + 'pickup-sdt/get-pickups',
-            currentOrder.value.token,
             {
               fias,
+              token: currentOrder.value.token,
               payment_type: currentOrder.value.PAYMENT_TYPE,
               company: 0, // 0 - физ.лицо, 1 - юр.лицо
               weight: currentOrder.value.WEIGHT,

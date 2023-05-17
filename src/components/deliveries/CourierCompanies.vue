@@ -3,19 +3,19 @@
     <div
       v-for="company in currentOrder.couriersServices"
       :key="company.delivery_code"
-      class="radio-block"
+      class="radio"
     >
-      <label
-        :for="company.transport_api_code + company.delivery_code"
-        class="radio-block__label"
-      >{{ company.name }}</label>
       <input
         v-model="currentOrder.pickedCourier"
         :id="company.transport_api_code + company.delivery_code"
-        class="radio-block__input"
+        class="radio__input"
         type="radio"
         :value="company"
       >
+      <label
+        :for="company.transport_api_code + company.delivery_code"
+        class="radio__label"
+      >{{ company.name }}</label>
     </div>
   </div>
 </template>

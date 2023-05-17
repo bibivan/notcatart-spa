@@ -27,7 +27,9 @@ export default defineComponent({
   setup () {
     const store = useStore()
     const orderState = reactive({
-      PRODUCTS: computed(() => store.getters.getCartContent)
+      PRODUCTS: computed(() => store.getters.getCartContent),
+      token: computed(() => store.getters.getToken),
+      COURIER_DELIVERY: true
     })
 
     return {

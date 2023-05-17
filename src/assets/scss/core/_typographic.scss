@@ -5,7 +5,7 @@
   --viewport-height: 100%;
 }
 
-.h1 {
+h1, .h1 {
   @include title;
   font-size: 60px;
   line-height: 69px;
@@ -21,8 +21,9 @@
   }
 }
 
-.h2 {
+h2, .h2 {
   @include title;
+  font-weight: 400;
   font-size: 40px;
   line-height: 46px;
 
@@ -30,11 +31,33 @@
     font-size: 30px;
     line-height: 34px;
   }
+
+  @include only-mobile {
+    font-size: 25px;
+    line-height: 29px;
+  }
 }
 
-.h3 {
+h3, .h3 {
   @include title;
-  font-size: 22px;
+  font-size: 32px;
+  line-height: 37px;
+
+  @include only-mobile {
+    font-size: 25px;
+    line-height: 29px;
+  }
+}
+
+h4, .h4 {
+  @include title;
+  font-size: 21px;
+  line-height: 25px;
+
+  @include only-mobile {
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 
 

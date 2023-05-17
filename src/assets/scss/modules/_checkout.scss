@@ -1,20 +1,29 @@
 .checkout {
   display: flex;
+  align-items: flex-start;
 
   @include portable {
-    flex-direction: column;
+    flex-flow: column-reverse;
     align-items: center;
   }
 
 
-  &__from {
+  &__form {
+    margin-right: 80px;
 
+    @include portable {
+      margin-right: 0;
+    }
   }
 
 
   &__cart {
     max-width: 437px;
     width: 100%;
+
+    @include portable {
+      margin-bottom: 40px;
+    }
   }
 
 }

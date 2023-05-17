@@ -12,13 +12,10 @@
   }
 
   &__title {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 37px;
+    margin: 0;
+    color: $color-black;
 
     @include only-mobile {
-      font-size: 25px;
-      line-height: 29px;
       text-align: center;
     }
   }
@@ -32,11 +29,11 @@
 
   &__costs {
     width: 100%;
-    margin-bottom: 40px;
+    //margin-bottom: 40px;
     background-color: $color-white-opacity;
 
     @include only-mobile {
-      margin-bottom: 35px;
+      //margin-bottom: 35px;
     }
   }
 
@@ -45,24 +42,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 37px;
     color: $color-black;
-
-    @include only-mobile {
-      font-size: 25px;
-      line-height: 29px;
-    }
-
-    &--products, &--delivery  {
-      font-size: 21px;
-      line-height: 25px;
-
-      @include only-mobile {
-        font-size: 18px;
-        line-height: 21px;
-      }
-    }
 
     &--delivery {
       margin-bottom: 20px;
