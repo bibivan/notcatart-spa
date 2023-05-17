@@ -44,7 +44,7 @@ export default defineComponent({
     const onPutProductToCart = product => {
       store.commit('addItemToCart', {
         NAME: product.NAME,
-        type: product.ATTRIBUTES.type,
+        type: product.ATTRIBUTES.articleType,
         ARTICLE: product.ARTICLE,
         SKU: product.SKU ? product.SKU : null,
         CNT: 1,

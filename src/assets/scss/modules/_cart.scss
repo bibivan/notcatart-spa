@@ -1,4 +1,15 @@
 .cart {
+  padding: 38px;
+  border: 1px solid $color-black;
+
+  @include only-mobile {
+    padding: 30px 20px;
+  }
+
+  &__items {
+    margin-bottom: 25px;
+    border-bottom: 1px solid $color-black;
+  }
 
   &__title {
     font-weight: 400;
@@ -12,59 +23,122 @@
     }
   }
 
-  @include portable {
-    padding: 15px;
-  }
-
-  @include only-mobile {
-    padding: 10px;
-  }
-
 
   &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-gray-400;
+    }
   }
 
   &__costs {
     width: 100%;
-    padding: 10px;
+    margin-bottom: 40px;
     background-color: $color-white-opacity;
+
+    @include only-mobile {
+      margin-bottom: 35px;
+    }
   }
 
   &__cost {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 32px;
+    line-height: 37px;
     color: $color-black;
 
-    &:not(:last-child) {
-      margin-bottom: 3px;
+    @include only-mobile {
+      font-size: 25px;
+      line-height: 29px;
+    }
+
+    &--products, &--delivery  {
+      font-size: 21px;
+      line-height: 25px;
+
+      @include only-mobile {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+
+    &--delivery {
+      margin-bottom: 20px;
+    }
+
+    &--sum {
+      margin-bottom: 0;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+
+
+
+  &__submit {
+    width: 100%;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    @include only-mobile {
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    &:disabled {
+      background-color: $color-gray-200;
     }
   }
 }
 
 .item-cart {
-  padding: 10px;
+  display: flex;
+  padding: 40px 0;
   background-color: $color-white-opacity;
 
-  &__img {
-    margin-bottom: 10px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  @include only-mobile {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
   }
 
+  &__img {
+    margin: 0 20px 0 0;
+    max-width: 170px;
+    height: auto;
+    object-fit: contain;
+
+    @include only-mobile {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  &__text-content { }
+
   &__article {
+    margin-bottom: 8px;
     font-size: 16px;
     line-height: 18px;
   }
 
-  &__name {
+  &__name, &__price {
     margin-bottom: 8px;
-    font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     text-transform: uppercase;
     color: $color-black;
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+
+  &__price {
+    font-weight: 400;
   }
 
   &__handlers {
@@ -72,67 +146,40 @@
   }
 
   &__counter {
-    display: flex;
-    margin-right: auto;
+    margin-right: 15px;
   }
 
   &__delete {
-    margin-left: 20px;
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-gray-400;
 
     svg {
-      fill: transparentize($color-error, 0.2);
+      margin-right: 10px;
+      width: 17px;
+      min-height: 17px;
+      color: $color-black;
     }
   }
 }
 
 .counter {
-  &__text {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    min-width: 50px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1;
-    text-align: center;
-  }
-
-  &__buttons {
-    display: flex;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 65px;
+  border: 1px solid $color-gray-50;
 
   &__btn {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $color-black;
-    width: 30px;
-    height: 30px;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1;
-    background-color: transparent;
-    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
-    cursor: pointer;
-
-    @include desktop {
-      &:hover {
-        background-color: $color-primary;
-      }
-    }
-
-    @include xs-desktop {
-      width: 26px;
-      height: 26px;
-    }
-
-    &:active {
-      transform: scale(1.05);
-    }
+    width: 16px;
+    min-height: 19px;
 
     &::before, &::after {
       content: '';
@@ -140,7 +187,8 @@
       top: calc(50% - 1px);
       left: 25%;
       display: block;
-      width: 50%;
+      border-radius: $border-radius-2;
+      width: 8px;
       height: 2px;
       background-color: $color-black;
     }
@@ -154,23 +202,11 @@
         display: none;
       }
     }
-
-
   }
 
   &__value {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 50px;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1;
+    font-size: 15px;
+    line-height: 17px;
     text-align: center;
-
-    @include xs-desktop {
-      font-size: 18px;
-      min-width: 40px;
-    }
   }
 }

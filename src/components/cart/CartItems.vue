@@ -1,61 +1,59 @@
 <template>
   <div class="cart">
-    <h2>Ваш заказ</h2>
-    <div class="grid grid--wrap">
+    <h2 class="cart__title">Ваш заказ</h2>
+    <div class="cart__items">
       <div
         v-for="(product, index) in currentOrder.PRODUCTS"
         :key="product.ARTICLE"
-        class="grid__col grid__col--w-100-desktop grid__col--w-50-tablet"
+        class="item-cart cart__item"
       >
-        <div class="item-cart cart__item">
-          <img class="item-cart__img" :src="product.picture" :alt="'Фото ' + product.NAME">
+        <img class="item-cart__img" :src="product.picture" :alt="'Фото ' + product.NAME">
+        <div class="item-cart__text-content">
+          <div class="item-cart__article"> {{ product.type }}</div>
           <div class="item-cart__name"> {{ product.NAME }}</div>
-          <div class="item-cart__name"> {{ product.NAME }}</div>
+          <div class="item-cart__price"> {{ product.PRICE }}  ₽</div>
           <div class="item-cart__handlers">
             <div class="item-cart__counter counter">
-              <div class="counter__buttons">
-                <button class="counter__btn counter__btn--minus" @click="product.CNT > 1 ? --product.CNT : 1"></button>
-                <div class="counter__value">{{ product.CNT }}</div>
-                <button class="counter__btn counter__btn--plus" @click="++product.CNT"></button>
-                <div class="counter__text">шт.</div>
-              </div>
+              <button class="btn-reset counter__btn counter__btn--minus" @click="changeProductAmount(product, false)"></button>
+              <div class="counter__value">{{ product.CNT }}</div>
+              <button class="btn-reset counter__btn counter__btn--plus" @click="changeProductAmount(product, true)"></button>
             </div>
-            <button class="item-cart__delete" @click="deleteProductItem(index)">
-              <svg viewBox="0 0 24 24" width="24px" height="24px">
-                <path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"/>
+            <button class="item-cart__delete btn-reset" @click="deleteProductItem(index)">
+              <svg viewBox="0 0 19 19" fill="none">
+                <path d="M16.1111 8.55556V17.4333C16.1111 17.7463 15.8574 18 15.5444 18H3.45556C3.1426 18 2.88889 17.7463 2.88889 17.4333V8.55556M7.61111 14.2222V8.55556M11.3889 14.2222V8.55556M18 4.77778H13.2778M13.2778 4.77778V1.56667C13.2778 1.25371 13.0241 1 12.7111 1H6.28889C5.97593 1 5.72222 1.25371 5.72222 1.56667V4.77778M13.2778 4.77778H5.72222M1 4.77778H5.72222" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
+              удалить
             </button>
           </div>
         </div>
       </div>
-
-      <div :class="['grid__col', {
-        'grid__col--w-50-tablet': (order?.PRODUCTS?.length % 2 !== 0) }]"
-      >
-        <div class="cart__costs">
-          <div class="cart__cost cart__cost--products">
-            <span class="bold">Стоимость товаров:</span> {{ order.PRICE }} р.
-          </div>
-          <div class="cart__cost cart__cost--delivery">
-            <span class="bold">Доставка:</span> {{ order.DELIVERY_PRICE ? (order.DELIVERY_PRICE + ' р.') : 'Не выбрано' }}
-          </div>
-          <div class="cart__cost cart__cost--total">
-            <span class="bold">Итого:</span> {{ totalCost }} р.
-          </div>
-        </div>
+    </div>
+    <div class="cart__costs">
+      <div class="cart__cost cart__cost--products">
+        Стоимость товаров <span>{{ order.PRICE }} ₽</span>
+      </div>
+      <div class="cart__cost cart__cost--delivery">
+        Доставка <span>{{ order.DELIVERY_PRICE ? (order.DELIVERY_PRICE + ' ₽') : 'Не выбрано' }}</span>
+      </div>
+      <div class="cart__cost cart__cost--total">
+        Итого: <span class="cart__cost--sum">{{ totalCost }} ₽</span>
       </div>
     </div>
+    <button class="btn btn-reset cart__submit">Оформить заказ</button>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent, toRef } from 'vue'
+import { useStore } from 'vuex'
+
 export default defineComponent({
   name: 'CartItems',
   props: {
     order: Object
   },
-  setup (props, { emit }) {
+  setup (props) {
+    const store = useStore()
     const currentOrder = toRef(props, 'order')
 
     currentOrder.value.PRICE = computed(() => currentOrder.value.PRODUCTS
@@ -63,18 +61,23 @@ export default defineComponent({
         return accumulator + (product.PRICE * product.CNT)
       }, 0))
 
-    const totalCost = computed(() => (
-      currentOrder.value.PRICE + (currentOrder.value.DELIVERY_PRICE ? currentOrder.value.DELIVERY_PRICE : 0)
-    ))
+    const totalCost = computed(() => {
+      return currentOrder.value.PRICE + (currentOrder.value.DELIVERY_PRICE ? currentOrder.value.DELIVERY_PRICE : 0)
+    })
 
-    const deleteProductItem = index => {
-      currentOrder.value.PRODUCTS.splice(index, 1)
-      if (!currentOrder.value.PRODUCTS?.length) emit('closeModal')
+    const deleteProductItem = index => store.commit('deleteItemFromCart', index)
+    const changeProductAmount = (item, isIncrease) => {
+      const updatedItem = { ...item }
+      isIncrease ? ++updatedItem.CNT : --updatedItem.CNT
+      if (!updatedItem.CNT) updatedItem.CNT = 1
+      store.commit('addItemToCart', updatedItem)
     }
 
-    return { totalCost, currentOrder, deleteProductItem }
+    return { totalCost, currentOrder, deleteProductItem, changeProductAmount }
   }
 })
+// increase the amount
+// reduce the amount
 </script>
 
 <style scoped>

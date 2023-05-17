@@ -1,6 +1,11 @@
 .checkout {
   display: flex;
 
+  @include portable {
+    flex-direction: column;
+    align-items: center;
+  }
+
 
   &__from {
 
@@ -9,6 +14,7 @@
 
   &__cart {
     max-width: 437px;
+    width: 100%;
   }
 
 }

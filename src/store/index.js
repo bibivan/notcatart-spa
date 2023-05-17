@@ -42,6 +42,10 @@ const store = createStore({
         ? state.cartContent.splice(matchedIndex, 1, data)
         : state.cartContent.push(data)
       localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
+    },
+    deleteItemFromCart: (state, itemIndex) => {
+      state.cartContent.splice(itemIndex, 1)
+      localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
     }
   }
 })
