@@ -39,7 +39,11 @@
         Итого: <span class="h3 cart__cost--sum">{{ totalCost }} ₽</span>
       </div>
     </div>
-<!--    <button class="btn btn-reset cart__submit">Оформить заказ</button>-->
+    <button
+      class="btn btn-reset cart__submit"
+      type="submit"
+      @click="currentOrder.sendOrderData = true"
+    >Оформить заказ</button>
   </div>
 </template>
 

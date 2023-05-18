@@ -14,7 +14,7 @@
         type="text"
         :disabled="disabled"
         :placeholder="placeholder"
-        @input="addressSelected = false; dropdownIsOpened = true; setLocation($event.target.value)"
+        @input="addressIsSelected = false; dropdownIsOpened = true; setLocation($event.target.value)"
         @focus="inputIsFocused = true"
         @blur="v$.$touch(); inputIsFocused = false"
         @keydown="onMoveFocus"
@@ -60,6 +60,10 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false
+    },
+    checkFullAddress: {
+      type: Boolean,
+      default: false
     }
   },
   setup (props, { emit }) {
@@ -68,11 +72,11 @@ export default defineComponent({
     const inputIsFocused = ref(false)
     const dropdownIsOpened = ref()
     const addressSuggestions = ref()
-    const addressSelected = ref()
+    const addressIsSelected = ref()
 
     const setCurrentAddress = addressItem => {
       dropdownIsOpened.value = false
-      addressSelected.value = true
+      addressIsSelected.value = true
       inputValue.value = addressItem.value
       emit('update:addressData', addressItem)
     }
@@ -99,15 +103,17 @@ export default defineComponent({
 
     // валидация
     const validationRules = computed(() => ({
-      required: helpers.withMessage('Выберите адрес из выпадающего списка', () => addressSelected.value)
+      required: helpers.withMessage('Выберите адрес из выпадающего списка', () => addressIsSelected.value),
+      fullAddress: helpers.withMessage('Для доставки курьером введите полный адрес',
+        () => props.checkFullAddress ? props.addressData.data?.house : true)
     }))
-    const v$ = useVuelidate(validationRules, addressSelected)
+    const v$ = useVuelidate(validationRules, {})
 
     return {
       inputValue,
       inputIsFocused,
       addressSuggestions,
-      addressSelected,
+      addressIsSelected,
       dropdownIsOpened,
       setLocation,
       setCurrentAddress,

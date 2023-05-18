@@ -27,13 +27,17 @@
       :order="order"
       :markersData="state.displayedPoints"
     />
+    <ErrorMessage :errorInstance="v$"/>
   </div>
 </template>
 
 <script>
-import { defineComponent, reactive, toRef, watch } from 'vue'
-import _ from 'lodash'
+import { computed, defineComponent, reactive, toRef, watch } from 'vue'
+import { useVuelidate } from '@vuelidate/core'
+import { helpers } from '@vuelidate/validators'
 import YaMapComponent from '@/components/deliveries/YaMapComponent'
+import ErrorMessage from '@/components/base/ErrorMessage'
+import _ from 'lodash'
 
 export default defineComponent({
   name: 'PickupPoints',
@@ -41,6 +45,7 @@ export default defineComponent({
     order: Object
   },
   components: {
+    ErrorMessage,
     YaMapComponent
   },
   setup (props) {
@@ -76,8 +81,17 @@ export default defineComponent({
       currentOrder.value.PVZ_ADDRESS = val.address
     }, { deep: true })
 
+    // валидация
+    const validationRules = computed(() => ({
+      required: helpers.withMessage('Выберите пункт выдачи',
+        () => !_.isEmpty(currentOrder.value.pickedPoint))
+    }))
+    const v$ = useVuelidate(validationRules, {})
+
     return {
-      state
+      state,
+      currentOrder,
+      v$
     }
   }
 })

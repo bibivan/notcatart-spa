@@ -1,5 +1,5 @@
 <template>
-  <form class="form-checkout">
+  <form class="form-checkout" @submit.prevent>
     <h1 class="visually-hidden">Оформление заказа</h1>
     <h2 class="h2 form-checkout__title">/ Оформление заказа</h2>
     <div class="form-checkout__inputs">
@@ -43,6 +43,7 @@
           <AddressInput
             class="w-100"
             v-model:addressData="currentOrder.addressData"
+            :checkFullAddress="currentOrder.COURIER_DELIVERY"
           />
         </div>
       </div>
@@ -52,42 +53,18 @@
       :order="currentOrder"
     />
     <PaymentType :order="order"/>
-    <div class="btn-block form-checkout__submit">
-      <button
-        class="btn btn-reset form-checkout__btn"
-        @click.prevent="onSendData"
-      >ОФОРМИТЬ ЗАКАЗ</button>
-      <ErrorMessage
-        v-if="currentOrder.COURIER_DELIVERY"
-        :errorInstance="v$"
-        validatedProperty="addressData"
-      />
-      <ErrorMessage
-        v-if="!$_.isEmpty(currentOrder.addressData)"
-        :errorInstance="v$"
-        validatedProperty="pickedCourier"
-      />
-      <ErrorMessage
-        :errorInstance="v$"
-        validatedProperty="pickupPoint"
-      />
-    </div>
-
   </form>
 </template>
 
 <script>
-import { computed, defineComponent, toRef, watch } from 'vue'
+import { defineComponent, toRef, watch } from 'vue'
 import { sendOrder } from '@/helpers/send-requests'
 import { useVuelidate } from '@vuelidate/core'
-import { helpers } from '@vuelidate/validators'
 import TextInput from '@/components/base/TextInput'
 import PhoneInput from '@/components/base/PhoneInput'
 import AddressInput from '@/components/base/AddressInput'
-import ErrorMessage from '@/components/base/ErrorMessage'
 import DeliveryTypes from '@/components/deliveries/DeliveryTypes'
 import PaymentType from '@/components/checkout/PaymentType'
-import _ from 'lodash'
 
 export default defineComponent({
   name: 'CheckoutForm',
@@ -96,7 +73,6 @@ export default defineComponent({
     AddressInput,
     PhoneInput,
     TextInput,
-    ErrorMessage,
     DeliveryTypes
   },
   props: {
@@ -117,34 +93,24 @@ export default defineComponent({
       value => setAddressData(value))
 
     // валидация
-    const validationRules = computed(() => ({
-      addressData: {
-        data: {
-          house: {
-            required: helpers.withMessage('Введите полный адрес', () => {
-              return !currentOrder.value.COURIER_DELIVERY ? true : currentOrder.value.addressData.data.house
-            })
-          }
-        }
-      },
-      pickupPoint: {
-        required: helpers.withMessage('Выберите пункт выдачи', () => {
-          return currentOrder.value.COURIER_DELIVERY ? true : !_.isEmpty(currentOrder.value.pickedPoint)
-        })
-      },
-      pickedCourier: {
-        required: helpers.withMessage('Выберите курьерскую службу', () => {
-          return !(currentOrder.value.COURIER_DELIVERY && currentOrder.value.addressData.data.house) ? true : !_.isEmpty(currentOrder.value.pickedCourier)
-        })
-      }
-    }))
-    const v$ = useVuelidate(validationRules, currentOrder)
+    // const validationRules = computed(() => ({
+    //   pickedCourier: {
+    //     required: helpers.withMessage('Выберите курьерскую службу', () => {
+    //       return !(currentOrder.value.COURIER_DELIVERY && currentOrder.value.addressData.data.house) ? true : !_.isEmpty(currentOrder.value.pickedCourier)
+    //     })
+    //   }
+    // }))
+    const v$ = useVuelidate()
 
     const onSendData = async () => {
       const result = await v$.value.$validate()
-      console.log(result)
-      if (result) sendOrder(currentOrder.value)
+      if (result) await sendOrder(currentOrder.value)
+      currentOrder.value.sendOrderData = false
     }
+
+    watch(() => currentOrder.value.sendOrderData, val => {
+      if (val) onSendData()
+    })
 
     return {
       currentOrder,

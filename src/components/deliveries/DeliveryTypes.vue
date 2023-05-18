@@ -26,7 +26,7 @@
         :order="currentOrder"
       />
       <CourierCompanies
-          v-show="currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.couriersServices)"
+          v-show="currentOrder.COURIER_DELIVERY && !$_.isEmpty(order.couriersServices) && order.addressData.data?.house"
           :order="currentOrder"
       />
     </div>

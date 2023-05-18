@@ -11,6 +11,7 @@
     "@vuelidate/core": "^2.0.2",
     "@vuelidate/validators": "^2.0.2",
     "core-js": "^3.8.3",
+    "custom-select": "^1.1.15",
     "dayjs": "^1.11.7",
     "inputmask": "^5.0.8",
     "swiper": "^9.3.2",

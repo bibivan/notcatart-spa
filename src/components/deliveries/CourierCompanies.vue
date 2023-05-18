@@ -17,14 +17,19 @@
         class="radio__label"
       >{{ company.name }}</label>
     </div>
+    <ErrorMessage :errorInstance="v$"/>
   </div>
 </template>
 
 <script>
-import { defineComponent, toRef, watch } from 'vue'
+import { computed, defineComponent, toRef, watch } from 'vue'
+import { helpers, required } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core'
+import ErrorMessage from '@/components/base/ErrorMessage'
 
 export default defineComponent({
   name: 'CourierCompanies',
+  components: { ErrorMessage },
   props: {
     order: Object
   },
@@ -41,8 +46,15 @@ export default defineComponent({
       currentOrder.value.PVZ_ADDRESS = ''
     }, { deep: true })
 
+    // валидация
+    const validationRules = computed(() => ({
+      required: helpers.withMessage('Выберите курьерскую службу', required)
+    }))
+    const v$ = useVuelidate(validationRules, currentOrder.value?.pickedCourier)
+
     return {
-      currentOrder
+      currentOrder,
+      v$
     }
   }
 })
