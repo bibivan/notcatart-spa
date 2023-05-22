@@ -101,6 +101,12 @@
   padding-bottom: 0;
 }
 
+.p-0-portable {
+  @include portable {
+    padding: 0;
+  }
+}
+
 .w-100 {
   width: 100%;
 }

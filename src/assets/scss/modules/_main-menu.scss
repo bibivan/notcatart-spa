@@ -35,38 +35,9 @@
   &__nav, &__submenu {
     margin-bottom: 25px;
   }
-
-  &__close-btn {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 27px;
-    height: 27px;
-    background-color: $color-black;
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      top: calc(50% - 1px);
-      left: calc(50% - 7px);
-      display: block;
-      width: 14px;
-      height: 2px;
-      background-color: $color-white;
-    }
-
-    &::before {
-      transform: rotate(-45deg);
-    }
-
-    &::after {
-      transform: rotate(45deg);
-    }
-  }
 }
 
-.nav,  {
+.nav {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -132,7 +132,6 @@ export default defineComponent({
     const indexRef = ref(0)
     const isVisible = ref(false)
     const showMultiple = index => {
-      console.log('here')
       hideScroll()
       indexRef.value = index // index of imgList
       isVisible.value = true

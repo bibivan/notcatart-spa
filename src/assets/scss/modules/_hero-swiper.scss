@@ -17,7 +17,7 @@
     @include bg-cover;
 
     &--1 {
-      background-position: 0 30%;
+      background-position: 0 50%;
       background-image: url('~@/assets/img/hero/hero-1.jpeg');
 
       @include only-tablet {

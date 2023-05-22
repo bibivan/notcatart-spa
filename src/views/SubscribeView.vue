@@ -20,7 +20,11 @@
       >Хочу</button>
       <PrivacyConfirm
         v-model="userData.privacyIsConfirmed"
-        class="full-screen-form__confirm "
+        class="full-screen-form__confirm"
+      />
+      <button
+        class="cross-btn full-screen-form__back"
+        @click="$router.back()"
       />
     </form>
   </section>

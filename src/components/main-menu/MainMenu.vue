@@ -52,7 +52,7 @@
           <RouterLink to="/cooperation" class="submenu__link" @click="$emit('closeMenu')">Сотрудничество</RouterLink>
         </li>
       </ul>
-      <button class="main-menu__close-btn btn-reset" @click="$emit('closeMenu')"/>
+      <button class="main-menu__close-btn cross-btn" @click="$emit('closeMenu')"/>
     </div>
   </div>
 

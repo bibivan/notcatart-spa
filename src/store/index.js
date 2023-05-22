@@ -23,7 +23,6 @@ const store = createStore({
       }
     },
     sendProductOrder: ({ commit }, payload) => {
-      console.log(payload)
       const data = {
         token: payload.token,
         FIAS: payload.FIAS,

@@ -1,8 +1,8 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="grid">
-        <div class="grid__col footer__left">
+      <div class="footer__content">
+        <div class="footer__left">
           <div class="footer__subscribe subscribe">
             <p class="subscribe__text">
               Подпишись и получай свежую информацию о новинках
@@ -17,7 +17,7 @@
             <small class="footer__copyright">2023 © Все права защищены</small>
           </div>
         </div>
-        <div class="grid__col footer__right">
+        <div class="footer__right">
           <div class="grid grid-wrap grid--mobile-wrap grid--mobile-row w-100">
             <div class="grid__col grid__col--w-55-mobile submenu-footer">
               <h5 class="submenu-footer__title">ПРОДУКТЫ</h5>

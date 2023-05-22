@@ -2,19 +2,45 @@
   padding: 35px 0;
   background-color: $section-background;
 
+  &__content {
+    display: flex;
+
+    @include only-mobile {
+      flex-direction: column;
+    }
+  }
+
   &__left {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    padding-right: 30px;
     max-width: 500px;
+    border-right: 1px solid $color-gray-700;
 
     @include only-tablet {
-      max-width: 220px;
+      padding-right: 28px;
+      max-width: 235px;
+    }
+
+    @include only-mobile {
+      padding-right: 0;
+      margin-bottom: 25px;
+      border-right: 0;
     }
   }
 
   &__right {
+    padding-left: 50px;
     width: 100%;
+
+    @include only-tablet {
+      padding-left: 28px;
+    }
+
+    @include only-mobile {
+      padding-left: 0;
+    }
   }
 
   &__subscribe {
