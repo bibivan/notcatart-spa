@@ -60,14 +60,14 @@ $xs-mobile: 320px;
   }
 }
 
-@mixin only-tablet {
-  @media (min-width: #{$tablet}) and (max-width: #{$portable}) {
+@mixin portable {
+  @media (max-width: #{$portable}) {
     @content;
   }
 }
 
-@mixin portable {
-  @media (max-width: #{$portable}) {
+@mixin only-tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$portable}) {
     @content;
   }
 }

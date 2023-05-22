@@ -23,9 +23,10 @@
 
 <script>
 import { computed, defineComponent, toRef, watch } from 'vue'
-import { helpers, required } from '@vuelidate/validators'
+import { helpers } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
 import ErrorMessage from '@/components/base/ErrorMessage'
+import _ from 'lodash'
 
 export default defineComponent({
   name: 'CourierCompanies',
@@ -48,9 +49,10 @@ export default defineComponent({
 
     // валидация
     const validationRules = computed(() => ({
-      required: helpers.withMessage('Выберите курьерскую службу', required)
+      required: helpers.withMessage('Выберите курьерскую службу',
+        () => currentOrder.value.COURIER_DELIVERY ? !_.isEmpty(currentOrder.value?.pickedCourier) : true)
     }))
-    const v$ = useVuelidate(validationRules, currentOrder.value?.pickedCourier)
+    const v$ = useVuelidate(validationRules, {})
 
     return {
       currentOrder,

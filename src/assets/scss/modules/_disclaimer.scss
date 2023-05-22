@@ -1,15 +1,41 @@
 .disclaimer {
-  padding: 60px;
+  padding: 50px;
   margin: 0 auto;
   max-width: 880px;
-  border: 2px solid $color-primary;
+  border: 1px solid $color-primary;
 
-  @include portable {
-    padding: 40px;
+  @include only-tablet {
+    padding: 30px 15px;
   }
 
-  &__title, &__description {
+  @include portable {
+    padding: 15px 20px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
     color: $color-disclaimer;
+    text-transform: uppercase;
     text-align: center;
+
+    @include only-mobile {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__description {
+    color: $color-disclaimer;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 125%;
+    text-align: center;
+
+    @include only-tablet {
+      font-size: 12px;
+    }
+
+    @include only-mobile {
+      font-size: 10px;
+    }
   }
 }

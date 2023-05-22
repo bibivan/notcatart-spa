@@ -84,7 +84,7 @@ export default defineComponent({
     // валидация
     const validationRules = computed(() => ({
       required: helpers.withMessage('Выберите пункт выдачи',
-        () => !_.isEmpty(currentOrder.value.pickedPoint))
+        () => currentOrder.value.COURIER_DELIVERY ? true : !_.isEmpty(currentOrder.value.pickedPoint))
     }))
     const v$ = useVuelidate(validationRules, {})
 

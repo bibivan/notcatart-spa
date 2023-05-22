@@ -1,49 +1,43 @@
 .footer {
-  background-color: $footer-bg-color;
+  padding: 35px 0;
+  background-color: $section-background;
 
-  &__content {
+  &__left {
+    flex-shrink: 0;
     display: flex;
-    flex-wrap: wrap;
-    margin: -15px;
+    flex-direction: column;
+    max-width: 500px;
+
+    @include only-tablet {
+      max-width: 220px;
+    }
   }
 
+  &__right {
+    width: 100%;
+  }
 
-  &__col {
-    padding: 15px;
-    width: 25%;
+  &__subscribe {
+    margin-bottom: 10px;
 
-    @include portable {
-      width: 50%;
-    }
-
-    @include xl-mobile {
-      width: 100%;
+    @include only-mobile {
+      margin-bottom: 0;
     }
   }
 
   &__logo {
-    margin-bottom: 30px;
-    font-size: 20px;
-  }
+    margin-bottom: 15px;
+    font-size: 24px;
+    line-height: 28px;
 
-  &__socials {
-    margin-bottom: 21px;
-
-    .social__link {
-      width: 25px;
-      height: 25px;
-      opacity: 0.3;
-      transition: opacity 0.15s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-      }
+    @include portable {
+      margin-bottom: 10px;
     }
   }
 
   &__copyright {
     font-size: 12px;
-    line-height: 1.55;
+    line-height: 14px;
     color: $color-gray-400;
   }
 }
@@ -85,6 +79,82 @@
 
     @include portable {
       font-size: 12px;
+    }
+  }
+}
+
+.subscribe {
+  display: flex;
+
+  @include portable {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__text {
+    margin: 0 15px 0 0;
+    font-size: 16px;
+    line-height: 18px;
+    color: $color-white;
+
+    @include only-tablet {
+      max-width: 226px;
+      margin: 0 0 10px 0;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @include only-mobile {
+      margin: 0 0 15px 0;
+      max-width: 259px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+.submenu-footer {
+  display: flex;
+  flex-direction: column;
+
+  &--show-mobile-only {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__title {}
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-white;
+
+    @include portable {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+
+      @include only-mobile {
+        margin-bottom: 7px;
+      }
+    }
+
+    &--nobr {
+      white-space:nowrap;
     }
   }
 }

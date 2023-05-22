@@ -91,7 +91,7 @@ export default defineComponent({
 
     watch(() => props.addressQuery, val => {
       inputValue.value = val
-    })
+    }, { immediate: true })
 
     // выбор адреса с клавиатуры
     const focusedAddress = ref(0)

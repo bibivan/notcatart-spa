@@ -1,5 +1,9 @@
 .gallery {
-  z-index: 97;
+  background-color: $color-white;
+
+  .vel-modal {
+    background: $color-black !important;
+  }
 
   &__swiper {
     --swiper-navigation-color: #{$color-white};
@@ -7,23 +11,52 @@
     overflow: hidden;
   }
 
-  &__slide {
+  &__btn {
+    margin: 30px auto 0 auto;
+    text-transform: uppercase;
+    max-width: 190px;
 
+    @include only-mobile {
+      max-width: 170px;
+    }
+  }
+}
 
-    &--complex {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      grid-column-gap: 10px;
-      grid-row-gap: 10px;
+.slide-gallery {
+  display: flex;
+  width: 100%;
+
+  @include only-mobile {
+    display: block;
+  }
+
+  &__cell {
+    width: 50%;
+
+    @include only-mobile {
+      width: 100%;
     }
   }
 
-  &__photo {
+
+  &__wrapper-img {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+
+    &--h-50 {
+      padding-top: 50%;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    cursor: zoom-in;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }

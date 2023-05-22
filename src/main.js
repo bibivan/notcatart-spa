@@ -4,8 +4,8 @@ import router from './router'
 import store from './store'
 import lodash from './helpers/lodash'
 import VueEasyLightbox from 'vue-easy-lightbox/dist/vue-easy-lightbox.esm.min.js'
-import 'swiper/scss'
-import 'swiper/scss/pagination'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 window.notcatartApp = createApp(App)
   .use(router)

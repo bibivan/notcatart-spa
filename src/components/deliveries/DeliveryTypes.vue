@@ -59,7 +59,7 @@ export default defineComponent({
       currentOrder.value.pickupPoints = []
 
       deliveries.forEach(item => {
-        if (courierDeliveryIds.includes(item.delivery_id)) currentOrder.value.couriersServices.push(item)
+        if (courierDeliveryIds.includes(item?.delivery_id)) currentOrder.value.couriersServices.push(item)
         else if (item.gps?.length) currentOrder.value.pickupPoints.push(item)
       })
     }
@@ -86,6 +86,10 @@ export default defineComponent({
     watch(() => currentOrder.value.fiases, value => {
       getDeliveries(value)
     }, { deep: true })
+
+    // watch(() => currentOrder.value.COURIER_DELIVERY, val => {
+    //   val ? currentOrder.value.pickedPoint = [] : currentOrder.value.pickedCourier = []
+    // })
 
     return { currentOrder }
   }

@@ -22,7 +22,7 @@ import CartItems from '@/components/cart/CartItems'
 import CheckoutForm from '@/components/checkout/CheckoutForm'
 
 export default defineComponent({
-  name: 'CartView',
+  name: 'CheckoutCartView',
   components: { CheckoutForm, CartItems },
   setup () {
     const store = useStore()

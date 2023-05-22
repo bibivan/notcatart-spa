@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section :id="id" class="section">
     <div class="product grid grid--column-tablet">
       <div class="grid__col grid__col--w-50-desktop">
         <ProductImages :images="product.PICTURES"/>
@@ -36,7 +36,8 @@ export default defineComponent({
   name: 'ProductItem',
   components: { ProductImages },
   props: {
-    product: Object
+    product: Object,
+    id: String
   },
   setup () {
     const store = useStore()

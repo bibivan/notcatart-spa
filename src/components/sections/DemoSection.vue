@@ -10,7 +10,7 @@
             alt="Demo-изображение"
           />
           <RouterLink
-            :to="{ name: 'catalog', hash: '#catalog' }"
+            :to="{ name: 'home', hash: '#catalog' }"
             class="demo__btn btn"
           >Хочу</RouterLink>
         </div>
@@ -21,7 +21,7 @@
             alt="Demo-изображение"
           />
           <RouterLink
-            :to="{ name: 'catalog', hash: '#catalog' }"
+            :to="{ name: 'home', hash: '#catalog' }"
             class="demo__btn btn"
           >Хочу</RouterLink>
         </div>

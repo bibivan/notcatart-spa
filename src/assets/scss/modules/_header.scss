@@ -1,5 +1,5 @@
 .header {
-  position: absolute;
+  position: fixed;
   z-index: $ui-index-3;
   top: 0;
   left: 0;
@@ -10,11 +10,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    //padding: 23px 0;
     width: 100%;
     height: $header-height;
 
     @include only-mobile {
+      flex-wrap: wrap;
+      padding: 0;
       height: $header-height-mobile;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+
+    @include only-mobile {
+      justify-content: space-between;
+      width: 100%;
     }
   }
 
@@ -22,10 +36,50 @@
     &:active {
       color: $color-primary;
     }
+
+    &--hide-mobile {
+      @include only-mobile {
+        display: none;
+      }
+    }
+
+    &--hide-desktop-tablet {
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__search {
+
+    &--with-divider {
+      @include tablet {
+        position: relative;
+        margin-left: 60px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -30px;
+          top: calc(50% - 22px);
+          display: block;
+          width: 1px;
+          height: 44px;
+          background-color: $color-gray-600;
+        }
+      }
+    }
   }
 
   &__links {
     display: flex;
+
+    @include only-mobile {
+      justify-content: center;
+      padding: 16px 0;
+      width: 100%;
+      border-top: 1px solid $color-gray-600;
+    }
   }
 
   &__link {
@@ -35,15 +89,15 @@
     color: $color-white;
     transition: color 0.15s ease-in-out;
 
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+
    @include desktop {
      &:hover {
        color: $color-primary;
      }
    }
-
-    &--catalog {
-      margin-right: 25px;
-    }
   }
 }
 
@@ -73,4 +127,10 @@
   .header {
     position: fixed;
   }
+}
+
+.search-btn {
+  display: block;
+  width: 17px;
+  height: 17px;
 }

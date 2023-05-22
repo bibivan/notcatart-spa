@@ -1,5 +1,5 @@
 <template>
-<button class="header__link header__link--cart cart-btn btn-reset" @click="$router.push('cart')">
+<button class="header__link header__link--cart cart-btn btn-reset">
   <CartSvg/>
   <span v-if="cartContent?.length" class="cart-btn__counter">{{ cartContent?.length }}</span>
 </button>

@@ -60,6 +60,27 @@ h4, .h4 {
   }
 }
 
+h5, .h5 {
+  @include title;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: $color-primary;
+
+  @include portable {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  @include only-mobile {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
 
 .text {
   font-family: $font-base;
@@ -163,6 +184,21 @@ a, .link {
 
   &.bg-white {
     background-color: $color-white;
+  }
+}
+
+.section-fullscreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  @include only-tablet {
+    min-height: calc(100vh - #{$header-height} - #{$footer-height-tablet});
+  }
+
+  @include only-mobile {
+    min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height-mobile});
   }
 }
 

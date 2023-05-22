@@ -22,16 +22,15 @@
     <div class="hero__swiper-holder">
       <Swiper
         class="hero-swiper"
-        :modules="modules"
         :loop="true"
-        :pagination="{ clickable: true }"
         :slidesPerView="1"
+        :grabCursor="true"
       >
         <SwiperSlide>
-          <div class="hero-swiper__slide hero-swiper__slide--1" style="background-image: url('./img/hero/hero-1.jpeg')"/>
+          <div class="hero-swiper__slide hero-swiper__slide--1"/>
         </SwiperSlide>
         <SwiperSlide>
-          <div class="hero-swiper__slide hero-swiper__slide--1" style="background-image: url('./img/hero/hero-2.jpeg')"/>
+          <div class="hero-swiper__slide hero-swiper__slide--2"/>
         </SwiperSlide>
       </Swiper>
     </div>
@@ -39,22 +38,14 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination } from 'swiper'
 
 export default defineComponent({
   name: 'HeroSection',
   components: {
     Swiper,
     SwiperSlide
-  },
-  setup () {
-    const heroImg1 = ref('background-image: url("./img/hero/hero-1.jpg")')
-    return {
-      modules: [Pagination],
-      heroImg1
-    }
   }
 })
 </script>

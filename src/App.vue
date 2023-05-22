@@ -21,7 +21,7 @@
 import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import TheHeader from '@/components/header/TheHeader'
 import TheFooter from '@/components/footer/TheFooter'
-import MainMenu from '@/components/MainMenu/MainMenu'
+import MainMenu from '@/components/main-menu/MainMenu'
 import { useStore } from 'vuex'
 
 export default defineComponent({

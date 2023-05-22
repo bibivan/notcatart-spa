@@ -1,7 +1,7 @@
 <template>
 <section class="grid some-info">
   <div class="grid__col some-info__outer-photo">
-    <div class="some-info__photo" :style="`background-image: url('${photoUrl}')`"/>
+    <div class="some-info__photo" :style="`background-image: url('${imgUrl}')`"/>
   </div>
   <div class="grid__col some-info__outer-text">
     <div class="section some-info__inner-text">
@@ -24,7 +24,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'SomeInfoSection',
   props: {
-    photoUrl: String,
+    imgUrl: String,
     headline: String,
     description: String
   }

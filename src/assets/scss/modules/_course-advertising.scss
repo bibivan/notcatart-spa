@@ -1,0 +1,89 @@
+.course-advertising {
+  display: flex;
+  padding: 0;
+
+  @include only-mobile {
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 100%;
+    background: url('~@/assets/img/course-advertising/course-advertising-img.png') center / cover no-repeat;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 75%;
+    }
+  }
+
+  &__text {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 80px;
+    width: 100%;
+    max-width: 596px;
+
+    @include only-tablet {
+      padding: 45px 25px;
+      max-width: 374px;
+    }
+
+    @include only-mobile {
+      padding: 45px 15px;
+      max-width: 320px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+
+    @include only-tablet {
+      margin-bottom: 20px;
+    }
+
+    @include only-mobile {
+      margin-bottom: 15px;
+      max-width: 232px;
+    }
+  }
+
+  &__item-text {
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 28px;
+    color: $color-white;
+
+    @include only-tablet {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    @include only-mobile {
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    &--caption {
+      text-transform: uppercase;
+    }
+
+    &--description {
+      max-width: 244px;
+    }
+
+    &--notcatart {
+      font-weight: 700;
+      font-style: italic;
+    }
+  }
+
+
+
+
+}

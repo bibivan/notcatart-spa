@@ -2,7 +2,8 @@
   <div
     :class="['field', {
       'field--dirty': !!inputValue,
-      'field--focused': isFocused
+      'field--focused': isFocused,
+      'field--bordered': bordered
     }]"
   >
     <label class="field__label" :for="id">{{ label }}</label>
@@ -48,7 +49,8 @@ export default defineComponent({
     type: {
       type: String,
       default: 'text'
-    }
+    },
+    bordered: Boolean
   },
   setup (props, { emit }) {
     const isFocused = ref(false)

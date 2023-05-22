@@ -9,7 +9,9 @@ $color-white: #fff;
 $color-white-opacity:transparentize($color-white, 0.9);
 $color-gray-50: #d9d9d9;
 $color-gray-200: #929292;
-$color-gray-400: #847e7e;
+$color-gray-300: #847e7e;
+$color-gray-400: #7a7a7a;
+$color-gray-600: #373636;
 $color-gray-700: #2e2929;
 
 
@@ -21,7 +23,7 @@ $color-text-accent: #99847e;
 $color-text: $color-white;
 $color-warning: #ffda45;
 $color-error: #ff2835;
-$color-disclaimer: #b09173;
+$color-disclaimer: #7b6158;
 
 $color-bg: $color-white;
 $section-background: $color-black;
@@ -33,7 +35,12 @@ $sl-caption-background: $color-white;
 
 //header heights
 $header-height: 90px;
-$header-height-mobile: 65px;
+$header-height-mobile: 115px;
+
+//footer heights
+$footer-height: 225px;
+$footer-height-tablet: 244px;
+$footer-height-mobile: 471px;
 
 //burger
 $burger-width: 35px;

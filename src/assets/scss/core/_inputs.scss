@@ -18,7 +18,7 @@ input:-webkit-autofill:focus {
     font-size: 16px;
     line-height: 18px;
     text-overflow: ellipsis;
-    color: $color-gray-400;
+    color: $color-gray-300;
     transform: translate(0);
     transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
   }
@@ -67,7 +67,6 @@ input:-webkit-autofill:focus {
 }
 
 .radio {
-
   &:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -142,7 +141,76 @@ input:-webkit-autofill:focus {
 
 }
 
+.checkbox {
+  position: relative;
 
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  /* для элемента label, связанного с & */
+  &__label {
+    display: inline-flex;
+    align-items: flex-start;
+    user-select: none;
+    font-size: 11px;
+    line-height: 125%;
+    color: $color-note;
+  }
+
+
+
+  &__link {
+    font: inherit;
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  /* создание в &__label псевдоэлемента before со следующими стилями */
+  &__label::before {
+    content: '';
+    box-sizing: border-box;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: 5px;
+    border: 1px solid $color-note;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+
+  /* стили при наведении курсора на checkbox */
+  @include desktop {
+    &__input:not(:disabled):not(:checked)+&__label:hover::before {
+      border-color: $color-black;
+    }
+  }
+
+  /* стили для активного чекбокса (при нажатии на него) */
+  &__input:not(:disabled):active+&__label::before {
+    border-color: $color-black;
+  }
+
+  /* стили для чекбокса, находящегося в фокусе */
+  &__input:focus+&__label::before { }
+
+  /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+  &__input:focus:not(:checked)+&__label::before { }
+
+  /* стили для чекбокса, находящегося в состоянии checked */
+  &__input:checked+&__label::before {
+    background-color: $color-note;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+
+  /* стили для чекбокса, находящегося в состоянии disabled */
+  &__input:disabled+&__label::before { }
+}
 
 
 

@@ -16,14 +16,34 @@ const routes = [
     component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyView.vue')
   },
   {
-    path: '/',
-    name: 'catalog',
-    component: HomeView
-  },
-  {
     path: '/cart',
     name: 'cart',
     component: () => import(/* webpackChunkName: "cart" */ '../views/CheckoutCartView.vue')
+  },
+  {
+    path: '/order-course',
+    name: 'orderCourse',
+    component: () => import(/* webpackChunkName: "orderCourse" */ '../views/OrderCourseView.vue')
+  },
+  {
+    path: '/cooperation',
+    name: 'cooperation',
+    component: () => import(/* webpackChunkName: "orderCourse" */ '../views/CooperationView.vue')
+  },
+  {
+    path: '/payment-info',
+    name: 'paymentInfo',
+    component: () => import(/* webpackChunkName: "orderCourse" */ '../views/PaymentInfoView.vue')
+  },
+  {
+    path: '/delivery-info',
+    name: 'deliveryInfo',
+    component: () => import(/* webpackChunkName: "orderCourse" */ '../views/DeliveryInfoView.vue')
+  },
+  {
+    path: '/subscribe',
+    name: 'subscribe',
+    component: () => import(/* webpackChunkName: "orderCourse" */ '../views/SubscribeView.vue')
   }
 ]
 

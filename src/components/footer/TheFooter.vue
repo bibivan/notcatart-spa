@@ -1,77 +1,120 @@
 <template>
-  <footer class="footer section">
+  <footer class="footer">
     <div class="container">
-      <div class="footer__content">
-        <div class="footer__col">
-          <a href="#" class="link logo footer__logo">
-            <span class="color-primary">@</span>notcatart
-          </a>
-          <ul class="social footer__socials">
-            <li class="social__item">
-              <a href="#" target="_blank" class="social__link social__link--fb" aria-label="Наша страничка во вКонтакте">
-              </a>
-            </li>
-            <li class="social__item">
-              <a href="#" target="_blank" class="social__link social__link--inst" aria-label="Наша страничка в Instagram">
-              </a>
-            </li>
-            <li class="social__item">
-              <a href="#" target="_blank" class="social__link social__link--email" aria-label="Наша электронная почта">
-              </a>
-            </li>
-          </ul>
-          <small class="footer__copyright">© 2023 notcatart.com</small>
+      <div class="grid">
+        <div class="grid__col footer__left">
+          <div class="footer__subscribe subscribe">
+            <p class="subscribe__text">
+              Подпишись и получай свежую информацию о новинках
+              и эксклюзивных предложениях
+            </p>
+            <RouterLink to="/subscribe" class="btn btn--bordered uppercase subscribe__link">Подписаться</RouterLink>
+          </div>
+          <div class="footer__outer-logo hide-mobile">
+            <a href="#" class="logo footer__logo">
+              <span class="color-primary">@</span>notcatart
+            </a>
+            <small class="footer__copyright">2023 © Все права защищены</small>
+          </div>
         </div>
-        <div class="footer__col menu">
-          <h4 class="menu__title">ПРОДУКТЫ</h4>
-          <ul class="menu__list list-reset">
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Style Is War</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Rich B*tch</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Курс макияжа</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Prices</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__col menu">
-          <h4 class="menu__title">ПАРТНЕРЫ</h4>
-          <ul class="menu__list list-reset">
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Золотое яблоко</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Priboralab</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Design</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Explore</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__col menu">
-          <h4 class="menu__title">ИНФОРМАЦИЯ</h4>
-          <ul class="menu__list list-reset">
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Политика конфиденциальности</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Дисклеймер</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Блог</a>
-            </li>
-            <li class="menu__item">
-              <a href="#" class="menu__link link">Developers</a>
-            </li>
-          </ul>
+        <div class="grid__col footer__right">
+          <div class="grid grid-wrap grid--mobile-wrap grid--mobile-row w-100">
+            <div class="grid__col grid__col--w-55-mobile submenu-footer">
+              <h5 class="submenu-footer__title">ПРОДУКТЫ</h5>
+              <div class="submenu-footer__links">
+                <RouterLink
+                  :to="{ name: 'home', hash: '#product_1' }"
+                  class="submenu-footer__link submenu-footer__link--nobr"
+                >
+                  Палетка Rich B*tch
+                </RouterLink>
+                <RouterLink
+                  :to="{ name: 'home', hash: '#product_2' }"
+                  class="submenu-footer__link submenu-footer__link--nobr"
+                >
+                  Палетка STYLE IS WAR
+                </RouterLink>
+                <RouterLink
+                  :to="{ name: 'orderCourse' }"
+                  class="submenu-footer__link"
+                >
+                  Онлайн обучение
+                </RouterLink>
+              </div>
+            </div>
+            <div class="grid__col grid__col--w-45-mobile submenu-footer">
+
+              <h5 class="submenu-footer__title">КУПИТЬ</h5>
+              <div class="submenu-footer__links">
+                <RouterLink
+                  :to="{ name: 'home', hash: '#product_1' }"
+                  class="submenu-footer__link"
+                >
+                  Личный кабинет
+                </RouterLink>
+                <RouterLink
+                  to="/payment-info"
+                  class="submenu-footer__link"
+                >
+                  Оплата
+                </RouterLink>
+                <RouterLink
+                  to="/delivery-info"
+                  class="submenu-footer__link"
+                >
+                  Доставка
+                </RouterLink>
+                <RouterLink
+                  to="/cooperation"
+                  class="submenu-footer__link"
+                >
+                  Сотрудничество
+                </RouterLink>
+              </div>
+            </div>
+            <div class="grid__col grid__col--w-55-mobile submenu-footer">
+              <h5 class="submenu-footer__title">ИНФОРМАЦИЯ</h5>
+              <div class="submenu-footer__links">
+                <RouterLink
+                  :to="{ name: 'home', hash: '#disclaimer' }"
+                  class="submenu-footer__link"
+                >
+                  Дисклеймер
+                </RouterLink>
+                <RouterLink
+                  :to="{ name: 'home', hash: '#gallery' }"
+                  class="submenu-footer__link"
+                >
+                  Галерея Life
+                </RouterLink>
+                <RouterLink
+                  to="/privacy"
+                  class="submenu-footer__link hide-mobile"
+                >
+                  Политика конфиденциальности
+                </RouterLink>
+              </div>
+            </div>
+            <div class="grid__col grid__col--w-45-mobile submenu-footer submenu-footer--show-mobile-only">
+              <h5 class="submenu-footer__title opacity-0">Информация</h5>
+              <div class="submenu-footer__links">
+                <RouterLink
+                  to="/privacy"
+                  class="submenu-footer__link"
+                >
+                  Политика<br>конфиденциальности
+                </RouterLink>
+              </div>
+            </div>
+            <div class="grid__col grid__col--w-100-mobile hide-desktop hide-tablet">
+              <div class="footer__outer-logo">
+                <a href="#" class="logo footer__logo">
+                  <span class="color-primary">@</span>notcatart
+                </a>
+                <small class="footer__copyright">2023 © Все права защищены</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

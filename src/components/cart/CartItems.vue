@@ -40,9 +40,8 @@
       </div>
     </div>
     <button
-      class="btn btn-reset cart__submit"
-      type="submit"
-      @click="currentOrder.sendOrderData = true"
+      class="btn cart__submit"
+      :disabled="order.fromErrorsCount"
     >Оформить заказ</button>
   </div>
 </template>

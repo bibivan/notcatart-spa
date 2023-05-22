@@ -9,6 +9,14 @@
     margin: -10px;
   }
 
+  &--gap-0 {
+    margin: 0;
+
+    .grid__col {
+      padding: 0;
+    }
+  }
+
   &--xl-gap {
     margin: -40px;
 
@@ -51,6 +59,10 @@
     }
   }
 
+  &--column {
+    flex-direction: column;
+  }
+
   &--column-tablet {
     @include only-tablet {
       flex-direction: column;
@@ -63,11 +75,31 @@
     }
   }
 
+  &--mobile-wrap {
+    @include only-mobile {
+      flex-wrap: wrap;
+    }
+  }
+
+  &--mobile-row {
+    @include only-mobile {
+      flex-direction: row;
+    }
+  }
+
   &__col {
     display: flex;
     align-items: stretch;
     padding: 15px;
     width: 100%;
+
+    &--w-50 {
+      width: 50%;
+    }
+
+    &--w-100 {
+      width: 100%;
+    }
 
     @include desktop {
 
@@ -75,8 +107,16 @@
         width: 33.33333%;
       }
 
+      &--w-40-desktop {
+        width: 40%;
+      }
+
       &--w-50-desktop {
         width: 50%;
+      }
+
+      &--w-60-desktop {
+        width: 60%;
       }
 
       &--w-67-desktop {
@@ -89,7 +129,6 @@
     }
 
     @include tablet {
-
       &--w-25-tab-to-desk {
         width: 25%;
       }
@@ -111,8 +150,31 @@
       }
     }
 
+    @include only-tablet {
+
+      &--w-30-tablet {
+        width: 30%;
+      }
+
+      &--w-70-tablet {
+        width: 70%;
+      }
+    }
+
     @include only-mobile {
       padding: 10px;
+
+      &--w-55-mobile {
+        width: 55%;
+      }
+
+      &--w-45-mobile {
+        width: 45%;
+      }
+
+      &--w-100-mobile {
+        width: 100%;
+      }
     }
   }
 }

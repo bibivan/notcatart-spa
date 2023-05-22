@@ -3,57 +3,37 @@
   flex-direction: column;
   align-items: center;
 
-  &__title, &__answer {
-    font-size: 20px;
-    color: $color-gray-50;
-
-    @include only-mobile {
-      font-size: 18px;
-    }
-
-    @include xs-mobile {
-      font-size: 16px;
-    }
-  }
-
   &__title {
-    font-weight: 300;
-  }
-
-  &__answer {
-    margin: 0 0 70px 0;
-    font-weight: 700;
-
-    @include only-mobile {
-      margin: 0 0 50px 0;
-    }
   }
 
   &__photo {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     width: 216px;
     height: 216px;
     border-radius: $border-rounded;
-  }
 
-  &__phone {
-
-  }
-
-  &__email {
-    margin-bottom: 35px;
-  }
-}
-
-.email-block, .phone-block {
-  &__label, &__link {
-    font-size: 18px;
-    line-height: 1.55;
-    color: $color-white;
 
     @include only-mobile {
-      font-size: 16px;
-      line-height: 1.35;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+
+    @include only-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    &:not(:last-child) {
+      margin: 0 25px 0 0;
+
+      @include only-mobile {
+        margin: 0 0 10px 0;
+      }
     }
   }
 }

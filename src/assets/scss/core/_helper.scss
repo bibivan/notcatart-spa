@@ -74,3 +74,37 @@
 .color-black {
   color: $color-black;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.hide-mobile {
+  @include only-mobile {
+    display: none;
+  }
+}
+
+.hide-tablet {
+  @include only-tablet {
+    display: none;
+  }
+}
+
+.hide-desktop {
+  @include desktop {
+    display: none;
+  }
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

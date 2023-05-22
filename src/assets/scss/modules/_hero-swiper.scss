@@ -18,6 +18,19 @@
 
     &--1 {
       background-position: 0 30%;
+      background-image: url('~@/assets/img/hero/hero-1.jpeg');
+
+      @include only-tablet {
+        background-position: 0 45%;
+      }
+
+      @include only-mobile {
+        background-position: 75% 40%;
+      }
+    }
+
+    &--2 {
+      background-image: url('~@/assets/img/hero/hero-2.jpeg')
     }
   }
 

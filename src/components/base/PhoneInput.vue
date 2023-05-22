@@ -2,7 +2,8 @@
   <div
     :class="['field', {
       'field--dirty': !!phoneValue,
-      'field--focused': isFocused
+      'field--focused': isFocused,
+      'field--bordered': bordered
     }]"
   >
     <label :for="id" class="field__label">{{ label }}</label>
@@ -43,7 +44,8 @@ export default defineComponent({
     label: {
       type: String,
       default: 'Телефон'
-    }
+    },
+    bordered: Boolean
   },
   setup (props, { emit }) {
     let maskedPhone

@@ -11,7 +11,7 @@
             <path d="M54 32L-2.9364e-06 63.1769L-2.10824e-07 0.823083L54 32Z" fill="currentColor"/>
           </svg>
         </button>
-        <img :src="'./img/promo-video-overlay/promo-video-overlay.jpg'" class="promo-video__cover" alt="promo обложка">
+        <img src="~@/assets/img/promo-video-overlay/promo-video-overlay.jpg" class="promo-video__cover" alt="promo обложка">
       </div>
       <iframe
         v-if="iFrameIsShown"

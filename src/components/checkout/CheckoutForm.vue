@@ -41,8 +41,8 @@
         </div>
         <div class="grid__col  grid__col--w-100-tab-to-desk">
           <AddressInput
-            class="w-100"
             v-model:addressData="currentOrder.addressData"
+            class="w-100"
             :checkFullAddress="currentOrder.COURIER_DELIVERY"
           />
         </div>
@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import { defineComponent, toRef, watch } from 'vue'
-import { sendOrder } from '@/helpers/send-requests'
+import { computed, defineComponent, onMounted, toRef, watch } from 'vue'
+import { useStore } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import TextInput from '@/components/base/TextInput'
 import PhoneInput from '@/components/base/PhoneInput'
@@ -93,23 +93,20 @@ export default defineComponent({
       value => setAddressData(value))
 
     // валидация
-    // const validationRules = computed(() => ({
-    //   pickedCourier: {
-    //     required: helpers.withMessage('Выберите курьерскую службу', () => {
-    //       return !(currentOrder.value.COURIER_DELIVERY && currentOrder.value.addressData.data.house) ? true : !_.isEmpty(currentOrder.value.pickedCourier)
-    //     })
-    //   }
-    // }))
     const v$ = useVuelidate()
+    currentOrder.value.fromErrorsCount = computed(() => v$.value.$silentErrors.length)
 
+    // отправка данных
+    const store = useStore()
     const onSendData = async () => {
       const result = await v$.value.$validate()
-      if (result) await sendOrder(currentOrder.value)
-      currentOrder.value.sendOrderData = false
+      if (result) store.dispatch('sendProductOrder', currentOrder.value)
     }
 
-    watch(() => currentOrder.value.sendOrderData, val => {
-      if (val) onSendData()
+    onMounted(() => {
+      document.body.addEventListener('click', e => {
+        if (e.target.classList.contains('cart__submit')) onSendData()
+      })
     })
 
     return {
