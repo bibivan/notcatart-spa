@@ -53,8 +53,10 @@ const router = createRouter({
   scrollBehavior (to, from, savedPosition) {
     // always scroll to top
     if (to.hash) {
+      const headerHeight = document.getElementById('the_header').clientHeight
       return {
         el: to.hash,
+        top: +headerHeight,
         behavior: 'smooth'
       }
     } else {

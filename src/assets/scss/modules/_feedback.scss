@@ -11,6 +11,8 @@
     width: 216px;
     height: 216px;
     border-radius: $border-rounded;
+    object-position: top;
+    object-fit: cover;
 
 
     @include only-mobile {

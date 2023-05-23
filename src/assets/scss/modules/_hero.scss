@@ -7,8 +7,8 @@
     width: 100%;
     padding-top: 47%;
 
-    @include portable {
-      padding-top: 59%;
+    @include only-tablet {
+      padding-top: 60%;
     }
 
     @include only-mobile {

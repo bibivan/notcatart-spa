@@ -16,15 +16,15 @@ const store = createStore({
     getCartContent: state => state.cartContent
   },
   actions: {
-    loadProducts: async ({ state, commit }) => {
-      if (state.token) {
-        const response = await apiFetch(config.apiUrl + 'products/get', { token: state.token })
+    loadProducts: async ({ getters, commit }) => {
+      if (getters.getToken) {
+        const response = await apiFetch(config.apiUrl + 'products/get', { token: getters.getToken })
         commit('setProducts', response)
       }
     },
-    sendProductOrder: ({ commit }, payload) => {
+    sendProductOrder: ({ getters, commit }, payload) => {
       const data = {
-        token: payload.token,
+        token: getters.getToken,
         FIAS: payload.FIAS,
         KLADR: payload.KLADR || '',
         DATE_CREATE: dayjs().format('DD.MM.YY HH:mm:ss'),
@@ -49,12 +49,15 @@ const store = createStore({
         LOYALTY_POINT: 0,
         DELIVERY_INTERVAL: 0,
         COMMENT: '',
-        PRODUCTS: payload.PRODUCTS
+        PRODUCTS: payload.cartContent
       }
       apiFetch(config.apiUrl + 'orders/add', data)
     },
-    sendCourseOrder: ({ commit }, payload) => {
-      apiFetch(config.apiUrl + 'courses-order/add', payload)
+    sendCourseOrder: ({ getters, commit }, payload) => {
+      apiFetch(config.apiUrl + 'form/add', {
+        token: getters.getToken,
+        ...payload
+      })
     },
     subscribeToNews: ({ commit }, payload) => {
       apiFetch(config.apiUrl + 'news-subscriber/add', payload)
@@ -74,11 +77,22 @@ const store = createStore({
       } catch { console.log('Ошибка парсинга содержимого корзины') }
     },
     addItemToCart: (state, data) => {
-      const matchedIndex = state.cartContent.findIndex(item => item.ARTICLE === data.ARTICLE)
+      console.log(data)
+      const product = {
+        NAME: data.NAME,
+        type: data.ATTRIBUTES.articleType,
+        ARTICLE: data.ARTICLE,
+        SKU: data.SKU ? data.SKU : null,
+        CNT: 1,
+        PRICE: data.PRICE,
+        picture: data.PICTURES[0],
+        size: data.SIZE
+      }
+      const matchedIndex = state.cartContent.findIndex(item => item.ARTICLE === product.ARTICLE)
 
       matchedIndex >= 0
-        ? state.cartContent.splice(matchedIndex, 1, data)
-        : state.cartContent.push(data)
+        ? state.cartContent.splice(matchedIndex, 1, product)
+        : state.cartContent.push(product)
       localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
     },
     deleteItemFromCart: (state, itemIndex) => {

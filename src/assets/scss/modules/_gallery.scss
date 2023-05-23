@@ -5,6 +5,11 @@
     background: $color-black !important;
   }
 
+  &__title {
+    text-align: center;
+    color: $color-black;
+  }
+
   &__swiper {
     --swiper-navigation-color: #{$color-white};
     //--swiper-navigation-sides-offset: -54px;

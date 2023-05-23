@@ -9,10 +9,10 @@
             src="https://apisf.nikit.me/upload/image/14052281684172648rich-1.png"
             alt="Demo-изображение"
           />
-          <RouterLink
-            :to="{ name: 'home', hash: '#product_1' }"
+          <button
             class="demo__btn btn"
-          >Хочу</RouterLink>
+            @click="onPutProductToCart(0)"
+          >Хочу</button>
         </div>
         <div class="grid__col demo__item">
           <img
@@ -20,10 +20,10 @@
             src="https://apisf.nikit.me/upload/image/14052281684173219style-is-war-1.png"
             alt="Demo-изображение"
           />
-          <RouterLink
-            :to="{ name: 'home', hash: '#product_2' }"
+          <button
             class="demo__btn btn"
-          >Хочу</RouterLink>
+            @click="onPutProductToCart(1)"
+          >Хочу</button>
         </div>
       </div>
     </div>
@@ -31,10 +31,23 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
-  name: 'DemoSection'
+  name: 'DemoSection',
+  setup () {
+    const store = useStore()
+    const products = computed(() => store.getters.getProducts)
+    const onPutProductToCart = index => {
+      store.commit('addItemToCart', products.value[index])
+    }
+
+    return {
+      products,
+      onPutProductToCart
+    }
+  }
 })
 </script>
 

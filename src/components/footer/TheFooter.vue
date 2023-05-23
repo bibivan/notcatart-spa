@@ -32,7 +32,7 @@
                   :to="{ name: 'home', hash: '#product_2' }"
                   class="submenu-footer__link submenu-footer__link--nobr"
                 >
-                  Палетка STYLE IS WAR
+                  Палетка Style is War
                 </RouterLink>
                 <RouterLink
                   :to="{ name: 'orderCourse' }"
@@ -82,7 +82,7 @@
                   Дисклеймер
                 </RouterLink>
                 <RouterLink
-                  :to="{ name: 'home', hash: '#gallery' }"
+                  to="/"
                   class="submenu-footer__link"
                 >
                   Галерея Life

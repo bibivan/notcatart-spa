@@ -8,7 +8,7 @@
         <div class="product__content">
           <h2 class="product__title">{{ product.NAME }}</h2>
           <div class="product__caption">{{ product.ATTRIBUTES.type }}</div>
-          <div class="product__cost">{{ product.PRICE }} ₽</div>
+          <div class="product__cost">{{ $h.formatPrice(product.PRICE) }} ₽</div>
           <button
             class="btn btn--bordered product__btn"
             @click="onPutProductToCart(product)"
@@ -28,8 +28,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import ProductImages from '@/components/products/ProductImages'
 
 export default defineComponent({
@@ -39,20 +39,12 @@ export default defineComponent({
     product: Object,
     id: String
   },
-  setup () {
-    const store = useStore()
+  setup (props) {
     const router = useRouter()
+    const store = useStore()
+
     const onPutProductToCart = product => {
-      store.commit('addItemToCart', {
-        NAME: product.NAME,
-        type: product.ATTRIBUTES.articleType,
-        ARTICLE: product.ARTICLE,
-        SKU: product.SKU ? product.SKU : null,
-        CNT: 1,
-        PRICE: product.PRICE,
-        picture: product.PICTURES[0],
-        size: product.SIZE
-      })
+      store.commit('addItemToCart', product)
       router.push({ name: 'cart' })
     }
 

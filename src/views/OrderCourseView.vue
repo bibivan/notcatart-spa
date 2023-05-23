@@ -55,7 +55,9 @@ export default defineComponent({
   components: { PrivacyConfirm, PhoneInput, TextInput },
   setup () {
     const store = useStore()
-    const userData = reactive({})
+    const userData = reactive({
+      notification_title: 'Заявка на онлайн курс notcatart'
+    })
     const v$ = useVuelidate()
 
     const onSubmit = async () => {

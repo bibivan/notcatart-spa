@@ -3,7 +3,7 @@
     <h2 class="cart__title">Ваш заказ</h2>
     <div class="cart__items">
       <div
-        v-for="(product, index) in currentOrder.PRODUCTS"
+        v-for="(product, index) in currentOrder?.cartContent"
         :key="product.ARTICLE"
         class="item-cart cart__item"
       >
@@ -11,7 +11,7 @@
         <div class="item-cart__text-content">
           <div class="item-cart__article"> {{ product.type }}</div>
           <div class="item-cart__name"> {{ product.NAME }}</div>
-          <div class="item-cart__price"> {{ product.PRICE }}  ₽</div>
+          <div class="item-cart__price"> {{ $h.formatPrice(product.PRICE) }}  ₽</div>
           <div class="item-cart__handlers">
             <div class="item-cart__counter counter">
               <button class="btn-reset counter__btn counter__btn--minus" @click="changeProductAmount(product, false)"></button>
@@ -30,13 +30,13 @@
     </div>
     <div class="cart__costs">
       <div class="h4 cart__cost cart__cost--products">
-        Стоимость товаров <span>{{ order.PRICE }} ₽</span>
+        Стоимость товаров <span>{{ $h.formatPrice(order.PRICE) }} ₽</span>
       </div>
       <div class="h4 cart__cost cart__cost--delivery">
-        Доставка <span>{{ order.DELIVERY_PRICE ? (order.DELIVERY_PRICE + ' ₽') : 'Не выбрано' }}</span>
+        Доставка <span>{{ order.DELIVERY_PRICE ? ($h.formatPrice(order.DELIVERY_PRICE) + ' ₽') : 'Не выбрано' }}</span>
       </div>
       <div class="h3 cart__cost cart__cost--total">
-        Итого: <span class="h3 cart__cost--sum">{{ totalCost }} ₽</span>
+        Итого: <span class="h3 cart__cost--sum">{{ $h.formatPrice(totalCost) }} ₽</span>
       </div>
     </div>
     <button
@@ -59,17 +59,11 @@ export default defineComponent({
     const store = useStore()
     const currentOrder = toRef(props, 'order')
 
-    currentOrder.value.PRICE = computed(() => currentOrder.value.PRODUCTS
-      .reduce((accumulator, product) => {
-        return accumulator + (product.PRICE * product.CNT)
-      }, 0))
-
     const totalCost = computed(() => {
       return currentOrder.value.PRICE + (currentOrder.value.DELIVERY_PRICE ? currentOrder.value.DELIVERY_PRICE : 0)
     })
 
     const deleteProductItem = index => store.commit('deleteItemFromCart', index)
-
     const changeProductAmount = (item, isIncrease) => {
       const updatedItem = { ...item }
 

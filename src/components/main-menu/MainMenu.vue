@@ -23,7 +23,7 @@
           </li>
           <li class="nav__item">
             <RouterLink
-              to="/order-course"
+              :to="{ name: 'home', hash: '#course_advertising_section' }"
               class="nav__link"
               @click="$emit('closeMenu')"
             >
@@ -32,7 +32,7 @@
           </li>
           <li class="nav__item">
             <RouterLink
-              :to="{ name: 'home', hash: '#gallery' }"
+              to="/"
               class="nav__link"
               @click="$emit('closeMenu')"
             >
