@@ -1,12 +1,16 @@
 .some-info {
-  margin-left: 0;
-  margin-right: 0;
+  display: flex;
   background-color: $color-white;
 
+  @include only-mobile {
+    flex-direction: column;
+  }
+
   &__outer-photo {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
+    width: 50%;
+    .swiper {
+      height: 100%;
+    }
   }
 
   &__photo {
@@ -24,23 +28,23 @@
   }
 
   &__outer-text {
-    padding-left: 0;
-    padding-right: 0;
+    width: 50%;
   }
 
-  &__inner-text {
+  &__text {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
     background-color: $color-white;
   }
 
   &__text {
-    padding: 0 120px;
+    padding: 80px 120px;
 
     @include portable {
-      padding: 0 30px;
+      padding: 40px 30px;
     }
   }
 
