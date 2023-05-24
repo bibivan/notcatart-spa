@@ -22,9 +22,11 @@
     <div class="hero__swiper-holder">
       <Swiper
         class="hero-swiper"
-        :loop="true"
-        :slidesPerView="1"
         :grabCursor="true"
+        :loop="true"
+        :modules="modules"
+        :pagination="{ clickable: true }"
+        :slidesPerView="1"
       >
         <SwiperSlide>
           <div class="hero-swiper__slide hero-swiper__slide--1"/>
@@ -40,12 +42,16 @@
 <script>
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper'
 
 export default defineComponent({
   name: 'HeroSection',
   components: {
     Swiper,
     SwiperSlide
+  },
+  setup () {
+    return { modules: [Pagination] }
   }
 })
 </script>
