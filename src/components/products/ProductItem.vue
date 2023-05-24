@@ -28,7 +28,6 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import ProductImages from '@/components/products/ProductImages'
 
@@ -39,18 +38,11 @@ export default defineComponent({
     product: Object,
     id: String
   },
-  setup (props) {
-    const router = useRouter()
+  setup () {
     const store = useStore()
+    const onPutProductToCart = product => store.commit('addItemToCart', product)
 
-    const onPutProductToCart = product => {
-      store.commit('addItemToCart', product)
-      router.push({ name: 'cart' })
-    }
-
-    return {
-      onPutProductToCart
-    }
+    return { onPutProductToCart }
   }
 })
 </script>
