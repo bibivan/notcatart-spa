@@ -83,6 +83,10 @@
     height: 100%;
     display: block;
     object-fit: cover;
+
+    @include only-mobile {
+      object-position: 53% 50%;
+    }
   }
 
   &__start-btn {

@@ -23,7 +23,7 @@
         {{ headline }}
       </h2>
       <div class="some-info__description">
-        {{ description }}
+        <slot/>
       </div>
     </div>
   </div>

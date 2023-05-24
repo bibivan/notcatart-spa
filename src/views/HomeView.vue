@@ -2,10 +2,11 @@
   <HeroSection/>
   <DemoSection/>
   <SomeInfoSection
-    :slideUrls="['./img/gallery/gallery-photo-16.jpg', './img/gallery/gallery-photo-17.jpg', './img/gallery/gallery-photo-18.jpg']"
+    :slideUrls="['./img/gallery/gallery-photo-15.jpg', './img/gallery/gallery-photo-17.jpg', './img/gallery/gallery-photo-18.jpg']"
     headline="/ СЕРГЕЙ ЛЮБИМОВ"
-    description="«Я всегда хотел дать вам самое лучшее - то, чем пользуюсь сам. Я долго к этому шел. Наслаждайтесь! За качество отвечаю головой»"
-  />
+  >
+    «Я всегда хотел дать вам самое <br class="hide-tablet hide-desktop">лучшее -<br class="hide-mobile">то, чем пользуюсь сам. <br>Я долго к этому шел. <br>Наслаждайтесь! <br>За качество отвечаю головой»
+  </SomeInfoSection>
   <ProductItem
     v-if="!$_.isEmpty(products)"
     id="product_1"
@@ -14,8 +15,9 @@
   <SomeInfoSection
     :slideUrls="['./img/gallery/gallery-photo-26.jpg', './img/gallery/gallery-photo-29.jpg', './img/gallery/gallery-photo-28.jpg', './img/gallery/gallery-photo-30.jpg']"
     headline="/ ЗАЦЕНИ"
-    description="Максимум пигментации. В палетках ты найдёшь разные текстуры.  Всего их четыре вида: матовые, воздушно-кремовые, шиммерные и глиттерная. Бархатные палетки так и просятся к тебе в руки! Их хочется гладить бесконечно. Обрати внимание на названия: мы уверены, что они западут в твое сердечко, потому что сделаны со смыслом, отражающим оттенки"
-  />
+  >
+    Максимум пигментации. <br>В палетках ты найдёшь разные текстуры. <br>Всего их четыре вида: матовые, <br>воздушно-кремовые, <br class="hide-desktop hide-tablet">шиммерные и глиттерная. <br>Бархатные палетки так и просятся к тебе <br class="hide-desktop">в руки! <br class="hide-tablet hide-mobile">Их хочется гладить бесконечно.<br>Обрати внимание на названия: мы <br class="hide-desktop">уверены, что<br class="hide-tablet hide-mobile">они западут в твое <br class="hide-desktop hide-mobile">сердечко, <br class="hide-desktop hide-tablet">потому что сделаны <br class="hide-tablet hide-mobile">со <br class="hide-desktop hide-mobile">смыслом, <br class="hide-desktop hide-tablet">отражающим оттенки
+  </SomeInfoSection>
   <ProductItem
     v-if="!$_.isEmpty(products)"
     id="product_2"

@@ -4,13 +4,13 @@
       <p class="course-advertising__item-text course-advertising__item-text--caption">
         / Ты мастер своего макияжа
       </p>
-      <h2 class="course-advertising__title">Хочешь научиться круто краситься и красить?</h2>
-      <p class="course-advertising__item-text  course-advertising__item-text--description">
-        Онлайн обучение с яркими идеями от
-        <span class="course-advertising__item-text--notcatart">
+      <h2 class="course-advertising__title">Хочешь <br>научиться <br>круто <br>краситься и <br>красить?</h2>
+      <p class="course-advertising__item-text">
+        Онлайн обучение с яркими <br class="hide-desktop">идеями <br class="hide-tablet hide-mobile">от
+        <span class="course-advertising__item-text course-advertising__item-text--notcatart">
           <span class="color-primary">@</span>notcatart
         </span>
-        создано для тебя.
+        <br class="hide-desktop hide-mobile">создано <br class="hide-desktop hide-tablet">для тебя.
       </p>
       <RouterLink :to="{ name: 'orderCourse' }" class="btn btn--bordered">Хочу</RouterLink>
     </div>

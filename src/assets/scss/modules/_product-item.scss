@@ -81,7 +81,7 @@
     line-height: 125%;
     color: $color-white;
 
-    @include only-tablet {
+    @include portable {
       font-size: 16px;
     }
 
@@ -92,6 +92,10 @@
     &--accent {
       font-style: italic;
       color: $color-text-accent;
+
+      @include only-mobile {
+        font-size: 14px;
+      }
     }
   }
 
@@ -108,5 +112,9 @@
     font-size: 14px;
     line-height: 1.55;
     color: $color-note;
+
+    @include only-mobile {
+      font-size: 12px;
+    }
   }
 }
