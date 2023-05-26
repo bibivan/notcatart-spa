@@ -53,7 +53,6 @@
 <script>
 import { defineComponent, reactive } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
-import { useStore } from 'vuex'
 import { useResponseModal } from '@/helpers/useResponseModal'
 import TextInput from '@/components/base/TextInput'
 import PhoneInput from '@/components/base/PhoneInput'
@@ -66,9 +65,11 @@ export default defineComponent({
     const {
       dataSending,
       responseMessage,
-      messageModalIsShown
-    } = useResponseModal()
-    const store = useStore()
+      messageModalIsShown,
+      sendData
+    } = useResponseModal(
+      'Запись на онлайн обучение от@notcatartоформлена успешно!',
+      'Произошла ошибка в оформлении! Попробуй еще раз')
     const userData = reactive({
       notification_title: 'Заявка на онлайн курс notcatart'
     })
@@ -77,17 +78,7 @@ export default defineComponent({
     const onSubmit = async () => {
       const result = await v$.value.$validate()
       console.log(result)
-      if (result) {
-        messageModalIsShown.value = true
-        dataSending.value = true
-        const response = await store.dispatch('sendCourseOrder', userData)
-        if (response.success) {
-          responseMessage.value = 'Запись на онлайн обучение от@notcatartоформлена успешно!'
-        } else {
-          responseMessage.value = 'Произошла ошибка в оформлении! Попробуй еще раз'
-        }
-        dataSending.value = false
-      }
+      if (result) await sendData('sendCourseOrder', userData)
     }
 
     return {

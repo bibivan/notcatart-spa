@@ -41,7 +41,6 @@
 
 <script>
 import { defineComponent, reactive } from 'vue'
-import { useStore } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { useResponseModal } from '@/helpers/useResponseModal'
 import TextInput from '@/components/base/TextInput'
@@ -54,9 +53,11 @@ export default defineComponent({
     const {
       dataSending,
       responseMessage,
-      messageModalIsShown
-    } = useResponseModal()
-    const store = useStore()
+      messageModalIsShown,
+      sendData
+    } = useResponseModal(
+      'Подписка на новости @notcatart оформлена успешно!',
+      'Произошла ошибка в оформлении! Попробуй еще раз')
     const userData = reactive({
       notification_title: 'Заявка на подписку с сайта @notacart'
     })
@@ -64,17 +65,7 @@ export default defineComponent({
 
     const onSubmit = async () => {
       const result = await v$.value.$validate()
-      if (result) {
-        messageModalIsShown.value = true
-        dataSending.value = true
-        const response = await store.dispatch('subscribeToNews', userData)
-        if (response.success) {
-          responseMessage.value = 'Подписка на новости @notcatart оформлена успешно!'
-        } else {
-          responseMessage.value = 'Произошла ошибка в оформлении! Попробуй еще раз'
-        }
-        dataSending.value = false
-      }
+      if (result) await sendData('subscribeToNews', userData)
     }
 
     return {

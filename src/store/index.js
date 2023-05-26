@@ -66,14 +66,16 @@ const store = createStore({
     },
     sendCourseOrder: async ({ getters, commit }, payload) => {
       return await apiFetch(config.apiUrl + 'form/add', {
-        token: getters.getToken,
-        ...payload
+        ...payload,
+        phone: '7' + payload.phone,
+        token: getters.getToken
       })
     },
     subscribeToNews: async ({ getters, commit }, payload) => {
       return await apiFetch(config.apiUrl + 'form/subscribe', {
-        token: getters.getToken,
-        ...payload
+        ...payload,
+        phone: '7' + payload.phone,
+        token: getters.getToken
       })
     }
   },
