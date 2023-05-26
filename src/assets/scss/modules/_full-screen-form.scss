@@ -49,6 +49,10 @@
 
   &__confirm {
     margin-bottom: 25px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 125%;
+    color: $color-note;
   }
 
   &__back {

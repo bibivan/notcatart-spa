@@ -7,8 +7,11 @@ export async function apiFetch (url = '', payload = {}) {
     })
     return res.json()
   } catch (e) {
-    console.log('Ошибка загрузки данных о продуктах')
-    throw e
+    console.log('Ошибка загрузки данных')
+    return {
+      success: false,
+      comment: 'Ошибка загрузки данных'
+    }
   }
 }
 

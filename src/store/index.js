@@ -22,8 +22,8 @@ const store = createStore({
         commit('setProducts', response)
       }
     },
-    sendProductOrder: ({ getters, commit }, payload) => {
-      const data = {
+    sendProductOrder: async ({ getters, commit }, payload) => {
+      return await apiFetch(config.apiUrl + 'orders/add', {
         token: getters.getToken,
         FIAS: payload.FIAS,
         KLADR: payload.KLADR || '',
@@ -50,17 +50,31 @@ const store = createStore({
         DELIVERY_INTERVAL: 0,
         COMMENT: '',
         PRODUCTS: payload.cartContent
-      }
-      apiFetch(config.apiUrl + 'orders/add', data)
+      })
     },
-    sendCourseOrder: ({ getters, commit }, payload) => {
-      apiFetch(config.apiUrl + 'form/add', {
+    loadPickUps: async ({ getters, commit }, payload) => {
+      return await apiFetch(config.apiUrl + 'pickup-sdt/get-pickups',
+        {
+          token: getters.getToken,
+          fias: payload.fias,
+          payment_type: payload.PAYMENT_TYPE,
+          company: 0, // 0 - физ.лицо, 1 - юр.лицо
+          weight: payload.WEIGHT,
+          parcel_size: payload.parcelSize,
+          order_sum: payload.PRICE
+        })
+    },
+    sendCourseOrder: async ({ getters, commit }, payload) => {
+      return await apiFetch(config.apiUrl + 'form/add', {
         token: getters.getToken,
         ...payload
       })
     },
-    subscribeToNews: ({ commit }, payload) => {
-      apiFetch(config.apiUrl + 'news-subscriber/add', payload)
+    subscribeToNews: async ({ getters, commit }, payload) => {
+      return await apiFetch(config.apiUrl + 'form/subscribe', {
+        token: getters.getToken,
+        ...payload
+      })
     }
   },
   mutations: {
@@ -75,6 +89,10 @@ const store = createStore({
         const currentOrder = JSON.parse(localStorage.getItem('notcatartOrder'))
         if (currentOrder?.length) state.cartContent = currentOrder
       } catch { console.log('Ошибка парсинга содержимого корзины') }
+    },
+    clearCart: state => {
+      localStorage.removeItem('notcatartOrder')
+      state.cartContent = []
     },
     addItemToCart: (state, data) => {
       console.log(data)

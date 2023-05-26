@@ -1,22 +1,17 @@
 <template>
 <section class="section bg-white">
   <div class="container">
-    <template v-if="$_.isEmpty(orderState?.cartContent)">
-      <h2 class="color-black">/ Корзина пуста</h2>
-      <button class="btn" @click="$router.back()">назад</button>
-    </template>
-    <template v-else>
-      <div class="checkout">
-        <CheckoutForm
-          class="checkout__form"
-          :order="orderState"
-        />
-        <CartItems
-          class="checkout__cart"
-          :order="orderState"
-        />
-      </div>
-    </template>
+    <div class="checkout">
+      <CheckoutForm
+        class="checkout__form"
+        :order="orderState"
+      />
+      <CartItems
+        v-if="!$_.isEmpty(orderState?.cartContent)"
+        class="checkout__cart"
+        :order="orderState"
+      />
+    </div>
   </div>
 </section>
 </template>

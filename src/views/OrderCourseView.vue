@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white section-fullscreen">
+  <section v-bind="$attrs" class="bg-white section-fullscreen">
     <h1 class="visually-hidden">Заказать онлайн курс</h1>
     <form id="contact_us_form" class="full-screen-form" @submit.prevent="onSubmit">
       <h3 class="full-screen-form__title">Запишись на курс, заполнив форму ниже и жми - хочу</h3>
@@ -30,30 +30,44 @@
         class="btn full-screen-form__btn"
         :disabled="v$.$silentErrors.length"
       >Хочу</button>
-      <PrivacyConfirm
-        v-model="userData.privacyIsConfirmed"
-        class="full-screen-form__confirm "
-      />
+      <div class="full-screen-form__confirm">
+        Регистрируясь, ты соглашаешься с нашей<br>
+        <RouterLink to="/privacy" class="checkbox__link">
+          Политикой конфиденциальности
+        </RouterLink>
+      </div>
       <button
         class="cross-btn full-screen-form__back"
         @click="$router.back()"
       />
     </form>
   </section>
+  <MessageModal
+    v-if="messageModalIsShown"
+    :dataSending="dataSending"
+    :message="responseMessage"
+    @closeModal="messageModalIsShown = false"
+  />
 </template>
 
 <script>
 import { defineComponent, reactive } from 'vue'
-import TextInput from '@/components/base/TextInput'
-import PhoneInput from '@/components/base/PhoneInput'
-import PrivacyConfirm from '@/components/base/PrivacyConfirm'
 import { useVuelidate } from '@vuelidate/core'
 import { useStore } from 'vuex'
+import { useResponseModal } from '@/helpers/useResponseModal'
+import TextInput from '@/components/base/TextInput'
+import PhoneInput from '@/components/base/PhoneInput'
+import MessageModal from '@/components/message-modal/MessageModal'
 
 export default defineComponent({
   name: 'OrderCourseView',
-  components: { PrivacyConfirm, PhoneInput, TextInput },
+  components: { MessageModal, PhoneInput, TextInput },
   setup () {
+    const {
+      dataSending,
+      responseMessage,
+      messageModalIsShown
+    } = useResponseModal()
     const store = useStore()
     const userData = reactive({
       notification_title: 'Заявка на онлайн курс notcatart'
@@ -63,10 +77,23 @@ export default defineComponent({
     const onSubmit = async () => {
       const result = await v$.value.$validate()
       console.log(result)
-      if (result) await store.dispatch('sendCourseOrder', userData)
+      if (result) {
+        messageModalIsShown.value = true
+        dataSending.value = true
+        const response = await store.dispatch('sendCourseOrder', userData)
+        if (response.success) {
+          responseMessage.value = 'Запись на онлайн обучение от@notcatartоформлена успешно!'
+        } else {
+          responseMessage.value = 'Произошла ошибка в оформлении! Попробуй еще раз'
+        }
+        dataSending.value = false
+      }
     }
 
     return {
+      dataSending,
+      responseMessage,
+      messageModalIsShown,
       userData,
       onSubmit,
       v$

@@ -35,10 +35,9 @@
 
 <script>
 import { defineComponent, toRef, watch } from 'vue'
-import { apiFetch } from '@/helpers/send-requests'
-import config from '@/config'
 import PickupPoints from '@/components/deliveries/PickupPoints'
 import CourierCompanies from '@/components/deliveries/CourierCompanies'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'DeliveryTypes',
@@ -47,6 +46,7 @@ export default defineComponent({
     order: Object
   },
   setup (props) {
+    const store = useStore()
     const currentOrder = toRef(props, 'order')
 
     const setResult = (data, fias) => {
@@ -68,16 +68,10 @@ export default defineComponent({
       for (const fias of fiases) {
         let response
         if (fias) {
-          response = await apiFetch(config.apiUrl + 'pickup-sdt/get-pickups',
-            {
-              fias,
-              token: currentOrder.value.token,
-              payment_type: currentOrder.value.PAYMENT_TYPE,
-              company: 0, // 0 - физ.лицо, 1 - юр.лицо
-              weight: currentOrder.value.WEIGHT,
-              parcel_size: currentOrder.value.parcelSize,
-              order_sum: currentOrder.value.PRICE
-            })
+          response = await store.dispatch('loadPickUps', {
+            fias,
+            ...currentOrder.value
+          })
         }
         if (response?.success) return setResult(response.data, fias)
       }
@@ -86,10 +80,6 @@ export default defineComponent({
     watch(() => currentOrder.value.fiases, value => {
       getDeliveries(value)
     }, { deep: true })
-
-    // watch(() => currentOrder.value.COURIER_DELIVERY, val => {
-    //   val ? currentOrder.value.pickedPoint = [] : currentOrder.value.pickedCourier = []
-    // })
 
     return { currentOrder }
   }
