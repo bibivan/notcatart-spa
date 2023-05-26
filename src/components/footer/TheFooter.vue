@@ -35,7 +35,7 @@
                   Палетка Style is War
                 </RouterLink>
                 <RouterLink
-                  :to="{ name: 'orderCourse' }"
+                  :to="{ name: 'home', hash: '#course_advertising_section' }"
                   class="submenu-footer__link"
                 >
                   Онлайн обучение

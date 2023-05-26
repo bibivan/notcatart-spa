@@ -12,7 +12,7 @@
     width: 248px;
     height: 248px;
     border-radius: $border-rounded;
-    object-position: top;
+    object-position: 50% 9%;
     object-fit: cover;
 
     @include only-tablet {
