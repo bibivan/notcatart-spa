@@ -83,6 +83,7 @@ h5, .h5 {
 
 
 .text {
+  font-family: $font-base;
   font-weight: 400;
   font-size: 20px;
   line-height: 125%;
@@ -103,6 +104,7 @@ h5, .h5 {
 
 
 a, .link {
+  font-family: $font-base;
   text-decoration: none;
   outline: none;
   -webkit-user-select: none;
@@ -112,21 +114,6 @@ a, .link {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-
-  &.theme-primary {
-    color: $color-primary;
-    font-family: $font-base;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 115%;
-    transition: text-decoration-line 0.2s ease-in-out;
-
-    @include desktop {
-      &:hover {
-        text-decoration-line: underline;
-      }
-    }
-  }
 
   &.underline-hover {
     @include desktop {
@@ -141,6 +128,7 @@ a, .link {
   display: flex;
   align-items: center;
   width: auto;
+  font-family: $font-base;
   font-weight: 700;
   font-size: 26px;
   line-height: 30px;
@@ -165,6 +153,7 @@ a, .link {
   position: relative;
   margin: 0;
   padding: $section-indent 0;
+  font-family: $font-base;
   background-color: $section-background;
   overflow: hidden;
   flex: 1 0 auto;
@@ -206,6 +195,7 @@ a, .link {
 }
 
 .notcatart {
+  font-family: $font-base;
   font-size: 18px;
   font-weight: 700;
   line-height: 155%;
@@ -239,6 +229,7 @@ a, .link {
   li {
     position: relative;
     padding-left: 2em;
+    font-family: $font-base;
     font-weight: 400;
     font-size: 20px;
     line-height: 125%;
