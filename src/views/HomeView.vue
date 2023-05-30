@@ -1,15 +1,13 @@
 <template>
   <HeroSection/>
-  <ProductItem
-    v-if="!$_.isEmpty(products)"
-    id="product_1"
-    :product="products[0]"
-  />
-  <ProductItem
-    v-if="!$_.isEmpty(products)"
-    id="product_2"
-    :product="products[1]"
-  />
+  <template v-if="!$_.isEmpty(products)">
+    <ProductItem
+      v-for="(product, index) in products"
+      :id="'product_' + (index + 1)"
+      :key="'product-key-' + index"
+      :product="product"
+    />
+  </template>
   <SomeInfoSection
     :slideUrls="['./img/gallery/gallery-photo-15.jpg', './img/gallery/gallery-photo-17.jpg', './img/gallery/gallery-photo-18.jpg']"
     headline="Сергей Любимов"
