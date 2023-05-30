@@ -2,7 +2,7 @@
   <section id="course_advertising_section" class="section course-advertising">
     <div class="course-advertising__text">
       <p class="course-advertising__item-text course-advertising__item-text--caption">
-        / Ты мастер своего макияжа
+        Ты мастер своего макияжа
       </p>
       <h2 class="course-advertising__title">Хочешь <br>научиться <br>круто <br>краситься и <br>красить?</h2>
       <p class="course-advertising__item-text">

@@ -1,7 +1,7 @@
 <template>
   <section class="section demo">
     <div class="container">
-      <h2 class="h2 demo__title">/ WOW</h2>
+      <h2 class="h2 demo__title">WOW</h2>
       <div class="demo__content grid grid--xxl-gap">
         <div class="grid__col demo__item">
           <img

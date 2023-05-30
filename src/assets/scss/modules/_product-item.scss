@@ -90,6 +90,14 @@
       margin-bottom: 10px;
     }
 
+    &+& {
+      margin-bottom: 0;
+
+      @include only-mobile {
+        margin-bottom: 0;
+      }
+    }
+
     &--accent {
       font-style: italic;
       color: $color-text-accent;

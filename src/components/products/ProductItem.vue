@@ -13,8 +13,11 @@
             class="btn btn--bordered product__btn"
             @click="onPutProductToCart(product)"
           >Хочу</button>
-          <p class="product__description">
+          <p :class="['product__description', { 'product__description--no-margin': product.ATTRIBUTES?.additionalDescription }]">
             {{ product.DESCRIPTION }}
+          </p>
+          <p v-if="product.ATTRIBUTES?.additionalDescription" class="product__description">
+            {{ product.ATTRIBUTES?.additionalDescription }}
           </p>
           <p class="product__description product__description--accent">
             {{ product.ATTRIBUTES.texture }}

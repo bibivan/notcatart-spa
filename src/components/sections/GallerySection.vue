@@ -1,7 +1,7 @@
 <template>
   <section id="gallery" class="section gallery">
     <div class="container">
-      <h2 class="gallery__title">/ ГАЛЕРЕЯ LIFE</h2>
+      <h2 class="gallery__title">ГАЛЕРЕЯ LIFE</h2>
       <Swiper :grabCursor="true">
         <SwiperSlide
           v-for="(slide, index) in swiperItems"
