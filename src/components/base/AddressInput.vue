@@ -36,7 +36,7 @@
 
 <script>
 import { computed, defineComponent, ref, watch } from 'vue'
-import { getAddressSuggestions } from '@/helpers/send-requests'
+import { getAddressSuggestions } from '@/helpers/sendRequests'
 import { useVuelidate } from '@vuelidate/core'
 import { helpers } from '@vuelidate/validators'
 import ErrorMessage from '@/components/base/ErrorMessage.vue'

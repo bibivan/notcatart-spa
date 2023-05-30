@@ -44,7 +44,7 @@ import { defineComponent, reactive } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { useResponseModal } from '@/helpers/useResponseModal'
 import TextInput from '@/components/base/TextInput'
-import MessageModal from '@/components/message-modal/MessageModal'
+import MessageModal from '@/components/messageModal/MessageModal'
 
 export default defineComponent({
   name: 'SubscribeView',

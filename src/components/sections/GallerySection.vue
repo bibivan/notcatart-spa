@@ -93,7 +93,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { hideScroll, showScroll } from '@/helpers/control-scrollbar'
+import { hideScroll, showScroll } from '@/helpers/controlScrollbar'
 
 export default defineComponent({
   name: 'GallerySection',

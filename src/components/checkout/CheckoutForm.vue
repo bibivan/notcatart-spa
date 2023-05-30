@@ -82,7 +82,7 @@ import PhoneInput from '@/components/base/PhoneInput'
 import AddressInput from '@/components/base/AddressInput'
 import DeliveryTypes from '@/components/deliveries/DeliveryTypes'
 import PaymentType from '@/components/checkout/PaymentType'
-import MessageModal from '@/components/message-modal/MessageModal'
+import MessageModal from '@/components/messageModal/MessageModal'
 
 export default defineComponent({
   name: 'CheckoutForm',

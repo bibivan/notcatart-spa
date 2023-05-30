@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
-import { apiFetch } from '@/helpers/send-requests'
-import renderProducts from '@/helpers/render-response'
+import { apiFetch } from '@/helpers/sendRequests'
+import renderProducts from '@/helpers/renderResponse'
 import config from '@/config'
 import dayjs from 'dayjs'
 

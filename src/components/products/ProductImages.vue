@@ -54,7 +54,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { showScroll, hideScroll } from '@/helpers/control-scrollbar'
+import { showScroll, hideScroll } from '@/helpers/controlScrollbar'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper'
 
