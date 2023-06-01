@@ -12,13 +12,13 @@
     :slideUrls="['./img/gallery/gallery-photo-15.jpg', './img/gallery/gallery-photo-17.jpg', './img/gallery/gallery-photo-18.jpg']"
     headline="Сергей Любимов"
   >
-    «Я всегда хотел дать вам самое <br class="hide-tablet hide-desktop">лучшее -<br class="hide-mobile">то, чем пользуюсь сам. <br>Я долго к этому шел. <br>Наслаждайтесь! <br>За качество отвечаю головой»
+    «Я всегда хотел дать вам самое <br class="hide-tablet hide-desktop">лучшее -<br class="hide-mobile">то, чем пользуюсь сам. <br>Я долго к этому шел.
   </SomeInfoSection>
   <SomeInfoSection
     :slideUrls="['./img/gallery/gallery-photo-26.jpg', './img/gallery/gallery-photo-29.jpg', './img/gallery/gallery-photo-28.jpg', './img/gallery/gallery-photo-30.jpg']"
-    headline="Зацени!"
+    headline="ЗАЦЕНИ"
   >
-    Максимум пигментации. <br>В палетках ты найдёшь разные текстуры. <br>Всего их четыре вида: матовые, <br>воздушно-кремовые, <br class="hide-desktop hide-tablet">шиммерные и глиттерная. <br>Бархатные палетки так и просятся к тебе <br class="hide-desktop">в руки! <br class="hide-tablet hide-mobile">Их хочется гладить бесконечно.<br>Обрати внимание на названия: мы <br class="hide-desktop">уверены, что<br class="hide-tablet hide-mobile">они западут в твое <br class="hide-desktop hide-mobile">сердечко, <br class="hide-desktop hide-tablet">потому что сделаны <br class="hide-tablet hide-mobile">со <br class="hide-desktop hide-mobile">смыслом, <br class="hide-desktop hide-tablet">отражающим оттенки
+    Максимум пигментации. <br>В палетках ты найдёшь разные текстуры: <br>матовые, спаркл, <br>который можно использовать как хайлайтер, <br>шиммерные и глиттерные. <br>Бархатные палетки так и просятся к тебе <br class="hide-desktop">в руки! <br class="hide-tablet hide-mobile">Их хочется гладить бесконечно.<br>Обрати внимание на названия: мы <br class="hide-desktop">уверены, что<br class="hide-tablet hide-mobile">они западут в твое <br class="hide-desktop hide-mobile">сердечко, <br class="hide-desktop hide-tablet">потому что сделаны <br class="hide-tablet hide-mobile">со <br class="hide-desktop hide-mobile">смыслом, <br class="hide-desktop hide-tablet">отражающим оттенки.
   </SomeInfoSection>
   <DemoSection/>
   <PromoVideoSection/>
