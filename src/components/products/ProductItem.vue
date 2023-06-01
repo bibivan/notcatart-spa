@@ -13,16 +13,27 @@
             class="btn btn--bordered product__btn"
             @click="onPutProductToCart(product)"
           >Хочу</button>
-          <p :class="['product__description', { 'product__description--no-margin': product.ATTRIBUTES?.additionalDescription }]">
+          <template v-if="product.ATTRIBUTES?.descriptionFirstParagraph">
+            <p :class="['product__description', { 'product__description--no-margin': product.ATTRIBUTES?.descriptionSecondParagraph }]">
+              {{ product.ATTRIBUTES?.descriptionFirstParagraph }}
+            </p>
+            <p v-if="product.ATTRIBUTES?.descriptionSecondParagraph"
+               :class="['product__description', { 'product__description--no-margin': product.ATTRIBUTES?.descriptionThirdParagraph }]">
+              {{ product.ATTRIBUTES?.descriptionSecondParagraph }}
+            </p>
+            <p v-if="product.ATTRIBUTES?.descriptionThirdParagraph" class="product__description">
+              {{ product.ATTRIBUTES?.descriptionThirdParagraph }}
+            </p>
+          </template>
+          <p v-else class="product__description">
             {{ product.DESCRIPTION }}
           </p>
-          <p v-if="product.ATTRIBUTES?.additionalDescription" class="product__description">
-            {{ product.ATTRIBUTES?.additionalDescription }}
-          </p>
           <p class="product__description product__description--accent">
-            {{ product.ATTRIBUTES.texture }}
+            {{ product.ATTRIBUTES?.texture }}
           </p>
-          <p class="product__note">/ Палетка также представлена в сети "Золотое яблоко" городов: Москва, Санкт-Петербург, Екатеринбург и online магазине.</p>
+          <p v-if="product.ATTRIBUTES?.aboutPartners" class="product__note">
+            {{ product.ATTRIBUTES?.aboutPartners }}
+          </p>
         </div>
       </div>
     </div>

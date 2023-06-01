@@ -90,7 +90,7 @@
       margin-bottom: 10px;
     }
 
-    &+& {
+    &--no-margin {
       margin-bottom: 0;
 
       @include only-mobile {
