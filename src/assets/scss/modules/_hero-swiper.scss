@@ -17,15 +17,21 @@
     @include bg-cover;
 
     &--1 {
-      background-position: 0 50%;
-      background-image: url('~@/assets/img/hero/hero-1.jpeg');
+
+      @include desktop {
+        background-position: right bottom;
+        background-image: url('~@/assets/img/hero/hero-1-1.png');
+      }
 
       @include only-tablet {
-        background-position: 0 45%;
+        background-image: url('~@/assets/img/hero/hero-1-1.png');
+        background-position: right -62px bottom 0;
       }
 
       @include only-mobile {
-        background-position: 75% 40%;
+        background-size: 130%;
+        background-image: url('~@/assets/img/hero/hero-1-2.jpeg');
+        background-position: left bottom;
       }
     }
 
