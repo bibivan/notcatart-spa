@@ -18,7 +18,7 @@
     :slideUrls="['./img/gallery/gallery-photo-26.jpg', './img/gallery/gallery-photo-29.jpg', './img/gallery/gallery-photo-28.jpg', './img/gallery/gallery-photo-30.jpg']"
     headline="ЗАЦЕНИ"
   >
-    Максимум пигментации. <br>В палетках ты найдёшь разные текстуры: <br>матовые, спаркл, <br>который можно использовать как хайлайтер, <br>шиммерные и глиттерные. <br>Бархатные палетки так и просятся к тебе <br class="hide-desktop">в руки! <br class="hide-tablet hide-mobile">Их хочется гладить бесконечно.<br>Обрати внимание на названия: мы <br class="hide-desktop">уверены, что<br class="hide-tablet hide-mobile">они западут в твое <br class="hide-desktop hide-mobile">сердечко, <br class="hide-desktop hide-tablet">потому что сделаны <br class="hide-tablet hide-mobile">со <br class="hide-desktop hide-mobile">смыслом, <br class="hide-desktop hide-tablet">отражающим оттенки.
+    Максимум пигментации. <br>В палетках ты найдёшь разные текстуры: <br>матовые, спаркл, который<br> можно использовать как хайлайтер, <br>шиммерные и глиттерные. <br>Бархатные палетки так и просятся к тебе <br class="hide-desktop">в руки! <br class="hide-tablet hide-mobile">Их хочется гладить бесконечно.<br>Обрати внимание на названия: мы <br class="hide-desktop">уверены, что<br class="hide-tablet hide-mobile">они западут в твое <br class="hide-desktop hide-mobile">сердечко, <br class="hide-desktop hide-tablet">потому что сделаны <br class="hide-tablet hide-mobile">со <br class="hide-desktop hide-mobile">смыслом, <br class="hide-desktop hide-tablet">отражающим оттенки.
   </SomeInfoSection>
   <DemoSection/>
   <PromoVideoSection/>
