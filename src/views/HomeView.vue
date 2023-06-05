@@ -23,7 +23,7 @@
   <DemoSection/>
   <PromoVideoSection/>
   <GetCoursesSection/>
-  <GallerySection v-if="false"/>
+  <GallerySection/>
   <FeedbackSection/>
   <DisclaimerSection/>
 </template>

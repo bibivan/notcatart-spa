@@ -56,7 +56,7 @@
         </SwiperSlide>
       </Swiper>
       <RouterLink
-        :to="{ name: 'home', hash: '#catalog' }"
+        :to="{ name: 'home', hash: '#product_1' }"
         class="btn gallery__btn"
       >Каталог</RouterLink>
     </div>
