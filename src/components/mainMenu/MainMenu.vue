@@ -32,7 +32,7 @@
           </li>
           <li class="nav__item">
             <RouterLink
-              to="/"
+              :to="{ name: 'home', hash: '#gallery' }"
               class="nav__link"
               @click="$emit('closeMenu')"
             >
@@ -43,13 +43,13 @@
       </nav>
       <ul class="main-menu__submenu submenu list-reset">
         <li class="submenu__item">
+          <RouterLink to="/about-product" class="submenu__link" @click="$emit('closeMenu')">О товарах</RouterLink>
+        </li>
+        <li class="submenu__item">
           <RouterLink to="/payment-info" class="submenu__link" @click="$emit('closeMenu')">Оплата</RouterLink>
         </li>
         <li class="submenu__item">
           <RouterLink to="/delivery-info" class="submenu__link" @click="$emit('closeMenu')">Доставка</RouterLink>
-        </li>
-        <li class="submenu__item">
-          <RouterLink to="/cooperation" class="submenu__link" @click="$emit('closeMenu')">Сотрудничество</RouterLink>
         </li>
       </ul>
       <button class="main-menu__close-btn cross-btn" @click="$emit('closeMenu')"/>
