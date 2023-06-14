@@ -16,6 +16,14 @@ const store = createStore({
     getCartContent: state => state.cartContent
   },
   actions: {
+    getPaymentUrl: async ({ getters, commit }, payload) => {
+      if (getters.getToken) {
+        return await apiFetch(config.apiUrl + 'payment/get-url', {
+          ...payload,
+          token: getters.getToken
+        })
+      }
+    },
     loadProducts: async ({ getters, commit }) => {
       if (getters.getToken) {
         const response = await apiFetch(config.apiUrl + 'products/get', { token: getters.getToken })
