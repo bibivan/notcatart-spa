@@ -4,8 +4,8 @@
       <h1 class="visually-hidden">Сотрудничество</h1>
       <p class="text">СОТРУДНИЧЕСТВО</p>
       <p class="text">Вопросы о сотрудничестве отправляйте по адресу: priboralab@gmail.com</p>
-      <p class="text">РЕКВИЗИТЫ</p>
-      <p class="text">
+      <p v-show="false" class="text">РЕКВИЗИТЫ</p>
+      <p v-show="false" class="text">
         ИП «ПРИБОРА ОЛЬГА ВИВКТОРОВНА»<br>
         ИНН 773475746015<br>
         РС (₽) 40802810201500185495<br>

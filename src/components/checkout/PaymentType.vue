@@ -28,16 +28,16 @@ export default {
   setup (props) {
     const currentOrder = toRef(props, 'order')
     const paymentTypes = ref([
-      {
+      /* {
         text: 'При получении',
         id: 1
+      }, */
+      {
+        text: 'Картой',
+        id: 2
       }
-      // {
-      //   text: 'Картой',
-      //   id: 2
-      // }
     ])
-    currentOrder.value.PAYMENT_TYPE = 1
+    currentOrder.value.PAYMENT_TYPE = 2
 
     return {
       currentOrder,

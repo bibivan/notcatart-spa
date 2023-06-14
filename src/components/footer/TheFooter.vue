@@ -40,6 +40,12 @@
                 >
                   Онлайн обучение
                 </RouterLink>
+                <RouterLink
+                  :to="{ name: 'home', hash: '#gallery' }"
+                  class="submenu-footer__link"
+                >
+                  Галерея Life
+                </RouterLink>
               </div>
             </div>
             <div class="grid__col grid__col--w-45-mobile submenu-footer">
@@ -47,10 +53,10 @@
               <h5 class="submenu-footer__title">КУПИТЬ</h5>
               <div class="submenu-footer__links">
                 <RouterLink
-                  :to="{ name: 'home', hash: '#product_1' }"
+                  to="/about-product"
                   class="submenu-footer__link"
                 >
-                  Личный кабинет
+                  О товарах
                 </RouterLink>
                 <RouterLink
                   to="/payment-info"
@@ -79,19 +85,19 @@
                   :to="{ name: 'home', hash: '#disclaimer' }"
                   class="submenu-footer__link"
                 >
-                  Дисклеймер
-                </RouterLink>
-                <RouterLink
-                  to="/"
-                  class="submenu-footer__link"
-                >
-                  Галерея Life
+                  Дисклеймер 18+
                 </RouterLink>
                 <RouterLink
                   to="/privacy"
                   class="submenu-footer__link hide-mobile"
                 >
                   Политика конфиденциальности
+                </RouterLink>
+                <RouterLink
+                  to="/public-offer"
+                  class="submenu-footer__link"
+                >
+                  Публичная оферта
                 </RouterLink>
               </div>
             </div>

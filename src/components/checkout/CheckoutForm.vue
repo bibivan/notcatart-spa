@@ -70,10 +70,19 @@
     :message="responseMessage"
     @closeModal="messageModalIsShown = false"
   />
+  <PaymentModal
+    v-if="paymentModalIsShown"
+    :cost="currentOrder.PRICE + currentOrder.DELIVERY_PRICE"
+    :email="currentOrder.EMAIL"
+    :order-id="orderId"
+    :dataSending="dataSending"
+    :message="responseMessage"
+    @closeModal="paymentModalIsShown = false"
+  />
 </template>
 
 <script>
-import { computed, defineComponent, onMounted, toRef, watch } from 'vue'
+import { computed, defineComponent, onMounted, ref, toRef, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { useResponseModal } from '@/helpers/useResponseModal'
@@ -83,10 +92,12 @@ import AddressInput from '@/components/base/AddressInput'
 import DeliveryTypes from '@/components/deliveries/DeliveryTypes'
 import PaymentType from '@/components/checkout/PaymentType'
 import MessageModal from '@/components/messageModal/MessageModal'
+import PaymentModal from '@/components/messageModal/PaymentModal'
 
 export default defineComponent({
   name: 'CheckoutForm',
   components: {
+    PaymentModal,
     MessageModal,
     PaymentType,
     AddressInput,
@@ -102,6 +113,8 @@ export default defineComponent({
   },
   setup (props) {
     const currentOrder = toRef(props, 'order')
+    const paymentModalIsShown = ref(false)
+    const orderId = ref(false)
 
     const setAddressData = value => {
       currentOrder.value.fiases = [value.data.settlement_fias_id, value.data.city_fias_id, value.data.area_fias_id, value.data.region_fias_id]
@@ -125,19 +138,24 @@ export default defineComponent({
     const onSendData = async () => {
       const result = await v$.value.$validate()
       if (result) {
-        messageModalIsShown.value = true
+        if (currentOrder.value.PAYMENT_TYPE === 2) {
+          paymentModalIsShown.value = true
+        } else {
+          messageModalIsShown.value = true
+        }
+
         dataSending.value = true
         const response = await store.dispatch('sendProductOrder', currentOrder.value)
-        if (response?.SDT?.SDT_result?.success) {
-          responseMessage.value = 'Заказ успешно оформлен'
+        if (response?.SF?.orderId) {
+          responseMessage.value = 'Заказ успешно оформлен. Номер заказа ' + response?.SF?.orderId
           currentOrder.value = { COURIER_DELIVERY: true }
           store.commit('clearCart')
+          orderId.value = response?.SF?.orderId
         } else {
-          responseMessage.value = response?.SDT?.SDT_result?.comment
-            ? response?.SDT?.SDT_result?.comment
-            : 'Произошла ошибка в оформлении заказа! Попробуй еще раз.'
+          responseMessage.value = 'Произошла ошибка в оформлении заказа! Попробуй еще раз.'
         }
-        dataSending.value = false
+        // В PaymentModal сразу идет редирект на страницу оплаты.
+        // dataSending.value = false
       }
     }
 
@@ -148,6 +166,8 @@ export default defineComponent({
     })
 
     return {
+      orderId,
+      paymentModalIsShown,
       currentOrder,
       onSendData,
       dataSending,

@@ -16,6 +16,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyView.vue')
   },
   {
+    path: '/about-product',
+    name: 'aboutProduct',
+    component: () => import(/* webpackChunkName: "aboutProduct" */ '../views/AboutProductView.vue')
+  },
+  {
+    path: '/public-offer',
+    name: 'publicOffer',
+    component: () => import(/* webpackChunkName: "publicOffer" */ '../views/PublicOfferView.vue')
+  },
+  {
     path: '/cart',
     name: 'cart',
     component: () => import(/* webpackChunkName: "cart" */ '../views/CheckoutCartView.vue')
