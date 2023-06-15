@@ -14,11 +14,11 @@
           <div class="item-cart__price"> {{ $h.formatPrice(product.PRICE) }}  ₽</div>
           <div class="item-cart__handlers">
             <div class="item-cart__counter counter">
-              <button class="btn-reset counter__btn counter__btn--minus" @click="changeProductAmount(product, false)"></button>
+              <button class="btn-reset counter__btn counter__btn--minus" @click="onChangeProductAmount(product, false)"></button>
               <div class="counter__value">{{ product.CNT }}</div>
-              <button class="btn-reset counter__btn counter__btn--plus" @click="changeProductAmount(product, true)"></button>
+              <button class="btn-reset counter__btn counter__btn--plus" @click="onChangeProductAmount(product, true)"></button>
             </div>
-            <button class="item-cart__delete btn-reset" @click="deleteProductItem(index)">
+            <button class="item-cart__delete btn-reset" @click="onDeleteProductItem(index)">
               <svg viewBox="0 0 19 19" fill="none">
                 <path d="M16.1111 8.55556V17.4333C16.1111 17.7463 15.8574 18 15.5444 18H3.45556C3.1426 18 2.88889 17.7463 2.88889 17.4333V8.55556M7.61111 14.2222V8.55556M11.3889 14.2222V8.55556M18 4.77778H13.2778M13.2778 4.77778V1.56667C13.2778 1.25371 13.0241 1 12.7111 1H6.28889C5.97593 1 5.72222 1.25371 5.72222 1.56667V4.77778M13.2778 4.77778H5.72222M1 4.77778H5.72222" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -63,17 +63,18 @@ export default defineComponent({
       return currentOrder.value.PRICE + (currentOrder.value.DELIVERY_PRICE ? currentOrder.value.DELIVERY_PRICE : 0)
     })
 
-    const deleteProductItem = index => store.commit('deleteItemFromCart', index)
-    const changeProductAmount = (item, isIncrease) => {
-      const updatedItem = { ...item }
-
-      isIncrease ? ++updatedItem.CNT : --updatedItem.CNT
-      updatedItem.CNT = updatedItem.CNT ? updatedItem.CNT : 1
-      console.log(updatedItem)
-      store.commit('addItemToCart', updatedItem)
+    const onDeleteProductItem = index => store.commit('deleteItemFromCart', index)
+    const onChangeProductAmount = (item, isIncrease) => {
+      const count = isIncrease ? item.CNT + 1 : item.CNT - 1
+      store.commit('changeProductAmount', { article: item.ARTICLE, count })
     }
 
-    return { totalCost, currentOrder, deleteProductItem, changeProductAmount }
+    return {
+      totalCost,
+      currentOrder,
+      onDeleteProductItem,
+      onChangeProductAmount
+    }
   }
 })
 </script>

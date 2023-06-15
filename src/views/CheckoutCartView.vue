@@ -35,7 +35,7 @@ export default defineComponent({
       orderState.PRICE = val.reduce((accumulator, product) => {
         return accumulator + (product.PRICE * product.CNT)
       }, 0)
-    }, { immediate: true })
+    }, { immediate: true, deep: true })
 
     return {
       orderState

@@ -104,7 +104,6 @@ const store = createStore({
       state.cartContent = []
     },
     addItemToCart: (state, data) => {
-      console.log(data)
       const product = {
         NAME: data.NAME,
         type: data.ATTRIBUTES.articleType,
@@ -115,12 +114,20 @@ const store = createStore({
         picture: data.PICTURES[0],
         size: data.SIZE
       }
-      const matchedIndex = state.cartContent.findIndex(item => item.ARTICLE === product.ARTICLE)
+      const matchedIndex = state.cartContent.findIndex(item => item.ARTICLE === data.ARTICLE)
 
-      matchedIndex >= 0
-        ? state.cartContent.splice(matchedIndex, 1, product)
-        : state.cartContent.push(product)
-      localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
+      if (matchedIndex < 0) {
+        state.cartContent.push(product)
+        localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
+      }
+    },
+    changeProductAmount: (state, data) => {
+      const matchedIndex = state.cartContent.findIndex(item => item.ARTICLE === data.article)
+
+      if (matchedIndex >= 0) {
+        state.cartContent[matchedIndex].CNT = data.count
+        localStorage.setItem('notcatartOrder', JSON.stringify(state.cartContent))
+      }
     },
     deleteItemFromCart: (state, itemIndex) => {
       state.cartContent.splice(itemIndex, 1)
