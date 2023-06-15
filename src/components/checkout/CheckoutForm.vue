@@ -115,7 +115,7 @@ export default defineComponent({
     const currentOrder = toRef(props, 'order')
     const paymentModalIsShown = ref(false)
     const orderId = ref(false)
-    const cost = computed(() => currentOrder.value.PRICE + currentOrder.value.DELIVERY_PRICE)
+    const cost = computed(() => currentOrder.value.PRICE + (currentOrder.value.DELIVERY_PRICE ? currentOrder.value.DELIVERY_PRICE : 0))
 
     const setAddressData = value => {
       currentOrder.value.fiases = [value.data.settlement_fias_id, value.data.city_fias_id, value.data.area_fias_id, value.data.region_fias_id]
@@ -148,10 +148,12 @@ export default defineComponent({
         dataSending.value = true
         const response = await store.dispatch('sendProductOrder', currentOrder.value)
         if (response?.SF?.orderId) {
-          responseMessage.value = 'Заказ успешно оформлен. Номер заказа ' + response?.SF?.orderId
-          currentOrder.value = { COURIER_DELIVERY: true }
-          store.commit('clearCart')
           orderId.value = response?.SF?.orderId
+          responseMessage.value = 'Заказ успешно оформлен. Номер заказа ' + response?.SF?.orderId
+          setTimeout(() => {
+            currentOrder.value = { COURIER_DELIVERY: true }
+            store.commit('clearCart')
+          }, 3000)
         } else {
           responseMessage.value = 'Произошла ошибка в оформлении заказа! Попробуй еще раз.'
         }
