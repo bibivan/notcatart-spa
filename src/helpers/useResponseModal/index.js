@@ -11,7 +11,7 @@ const useResponseModal = (successText, failedText) => {
     console.log(payload)
     messageModalIsShown.value = true
     dataSending.value = true
-    const response = await store.dispatch('subscribeToNews', payload)
+    const response = await store.dispatch(methodName, payload)
     if (response.success) {
       console.log('here')
       responseMessage.value = successText

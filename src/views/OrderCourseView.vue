@@ -68,7 +68,7 @@ export default defineComponent({
       messageModalIsShown,
       sendData
     } = useResponseModal(
-      'Запись на онлайн обучение от@notcatartоформлена успешно!',
+      'Запись на онлайн обучение от @notcatart оформлена успешно!',
       'Произошла ошибка в оформлении! Попробуй еще раз')
     const userData = reactive({
       notification_title: 'Заявка на онлайн курс notcatart'

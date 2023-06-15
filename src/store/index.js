@@ -82,7 +82,6 @@ const store = createStore({
     subscribeToNews: async ({ getters, commit }, payload) => {
       return await apiFetch(config.apiUrl + 'form/subscribe', {
         ...payload,
-        phone: '7' + payload.phone,
         token: getters.getToken
       })
     }
