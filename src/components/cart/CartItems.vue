@@ -65,7 +65,8 @@ export default defineComponent({
 
     const onDeleteProductItem = index => store.commit('deleteItemFromCart', index)
     const onChangeProductAmount = (item, isIncrease) => {
-      const count = isIncrease ? item.CNT + 1 : item.CNT - 1
+      let count = isIncrease ? item.CNT + 1 : item.CNT - 1
+      if (count <= 0) count = 1
       store.commit('changeProductAmount', { article: item.ARTICLE, count })
     }
 
