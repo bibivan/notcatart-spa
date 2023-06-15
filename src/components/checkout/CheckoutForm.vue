@@ -72,7 +72,7 @@
   />
   <PaymentModal
     v-if="paymentModalIsShown"
-    :cost="currentOrder.PRICE + currentOrder.DELIVERY_PRICE"
+    :cost="cost"
     :email="currentOrder.EMAIL"
     :order-id="orderId"
     :dataSending="dataSending"
@@ -115,6 +115,7 @@ export default defineComponent({
     const currentOrder = toRef(props, 'order')
     const paymentModalIsShown = ref(false)
     const orderId = ref(false)
+    const cost = computed(() => currentOrder.value.PRICE + currentOrder.value.DELIVERY_PRICE)
 
     const setAddressData = value => {
       currentOrder.value.fiases = [value.data.settlement_fias_id, value.data.city_fias_id, value.data.area_fias_id, value.data.region_fias_id]
@@ -166,6 +167,7 @@ export default defineComponent({
     })
 
     return {
+      cost,
       orderId,
       paymentModalIsShown,
       currentOrder,
