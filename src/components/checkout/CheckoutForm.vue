@@ -153,7 +153,7 @@ export default defineComponent({
           setTimeout(() => {
             currentOrder.value = { COURIER_DELIVERY: true }
             store.commit('clearCart')
-          }, 3000)
+          }, 1500)
         } else {
           responseMessage.value = 'Произошла ошибка в оформлении заказа! Попробуй еще раз.'
         }
