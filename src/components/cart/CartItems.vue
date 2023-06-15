@@ -69,6 +69,7 @@ export default defineComponent({
 
       isIncrease ? ++updatedItem.CNT : --updatedItem.CNT
       updatedItem.CNT = updatedItem.CNT ? updatedItem.CNT : 1
+      console.log(updatedItem)
       store.commit('addItemToCart', updatedItem)
     }
 
