@@ -38,6 +38,8 @@ export default defineComponent({
     const currentOrder = toRef(props, 'order')
 
     watch(() => currentOrder.value.pickedCourier, val => {
+      if (_.isEmpty(val)) return
+
       const postCourierDeliveryIds = [7, 22]
       if (postCourierDeliveryIds.includes(val.delivery_id)) currentOrder.value.RU_POST_DELIVERY = true
 
@@ -45,6 +47,7 @@ export default defineComponent({
       currentOrder.value.PLACE_ID = val.place_id
       currentOrder.value.ADDRESS = currentOrder.value.addressData?.unrestricted_value
       currentOrder.value.PVZ_ADDRESS = ''
+      console.log(currentOrder.value.PLACE_ID, 'place id', _.isEmpty(val))
     }, { deep: true })
 
     // валидация

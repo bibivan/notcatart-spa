@@ -81,6 +81,21 @@ export default defineComponent({
       getDeliveries(value)
     }, { deep: true })
 
+    watch(() => currentOrder.value.addressData, () => {
+      delete currentOrder.value?.PLACE_ID
+      delete currentOrder.value?.pickedPoint
+      delete currentOrder.value?.pickedCourier
+    })
+
+    watch(() => currentOrder.value.COURIER_DELIVERY, val => {
+      if (val && currentOrder.value?.pickedCourier?.place_id) {
+        currentOrder.value.PLACE_ID = currentOrder.value?.pickedCourier?.place_id
+      }
+      if (!val && currentOrder.value?.pickedPoint?.place_id) {
+        currentOrder.value.PLACE_ID = currentOrder.value?.pickedPoint?.place_id
+      }
+    })
+
     return { currentOrder }
   }
 })

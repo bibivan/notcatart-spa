@@ -127,7 +127,8 @@ export default defineComponent({
 
     // валидация
     const v$ = useVuelidate()
-    currentOrder.value.fromErrorsCount = computed(() => v$.value.$silentErrors.length)
+    const fromErrorsCount = computed(() => v$.value.$silentErrors.length)
+    watch(fromErrorsCount, val => (currentOrder.value.fromErrorsCount = val))
 
     // отправка данных
     const {

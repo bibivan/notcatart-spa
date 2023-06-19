@@ -75,6 +75,8 @@ export default defineComponent({
     watch(() => state.filterByCompany, () => filterPickupPoints())
 
     watch(() => currentOrder.value.pickedPoint, val => {
+      if (_.isEmpty(val)) return
+
       currentOrder.value.DELIVERY_PRICE = val.cost
       currentOrder.value.PLACE_ID = val.place_id
       currentOrder.value.ADDRESS = val.address
