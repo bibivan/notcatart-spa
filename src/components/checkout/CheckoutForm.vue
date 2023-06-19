@@ -5,12 +5,12 @@
     @submit.prevent
   >
     <div v-if="$_.isEmpty(currentOrder?.cartContent)" class="flex-column-start">
-      <h1 class="h2 color-black">/ Корзина пуста</h1>
+      <h1 class="h2 color-black">Корзина пуста</h1>
       <button class="btn" @click="$router.back()">назад</button>
     </div>
     <template v-else>
       <h1 class="visually-hidden">Оформление заказа</h1>
-      <h2 class="h2 form-checkout__title">/ Оформление заказа</h2>
+      <h2 class="h2 form-checkout__title">Оформление заказа</h2>
       <div class="form-checkout__inputs">
         <div class="grid grid--wrap">
           <div class="grid__col grid__col--w-50-tab-to-desk">

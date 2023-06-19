@@ -12,7 +12,7 @@
     :slideUrls="['./img/gallery/gallery-photo-15.jpg', './img/gallery/gallery-photo-17.jpg', './img/gallery/gallery-photo-18.jpg']"
     headline="Сергей Любимов"
   >
-    «Я всегда хотел дать вам самое <br class="hide-tablet hide-desktop">лучшее - <br class="hide-mobile">то, чем пользуюсь сам. <br>Я долго к этому шел.»
+    «Я всегда хотел дать вам самое <br class="hide-tablet hide-desktop">лучшее - <br class="hide-mobile">то, чем пользуюсь сам. <br>Я долго к этому шел».
   </SomeInfoSection>
   <SomeInfoSection
     :slideUrls="['./img/gallery/gallery-photo-26.jpg', './img/gallery/gallery-photo-29.jpg', './img/gallery/gallery-photo-28.jpg', './img/gallery/gallery-photo-30.jpg']"
