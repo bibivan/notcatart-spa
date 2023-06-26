@@ -1,12 +1,13 @@
 import { createStore } from 'vuex'
 import { apiFetch } from '@/helpers/sendRequests'
 import renderProducts from '@/helpers/renderResponse'
+import mockProducts from '@/data/products'
 import config from '@/config'
 import dayjs from 'dayjs'
 
 const store = createStore({
   state: () => ({
-    products: [],
+    products: renderProducts(mockProducts),
     token: null,
     cartContent: []
   }),
@@ -26,8 +27,9 @@ const store = createStore({
     },
     loadProducts: async ({ getters, commit }) => {
       if (getters.getToken) {
-        const response = await apiFetch(config.apiUrl + 'products/get', { token: getters.getToken })
-        commit('setProducts', response)
+        console.log('mockData are using')
+        // const response = await apiFetch(config.apiUrl + 'products/get', { token: getters.getToken })
+        // commit('setProducts', response)
       }
     },
     sendProductOrder: async ({ getters, commit }, payload) => {
