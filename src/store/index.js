@@ -86,6 +86,18 @@ const store = createStore({
         ...payload,
         token: getters.getToken
       })
+    },
+    sendSuccessPayLogs: async ({ getters }, payload) => {
+      return await apiFetch(config.apiUrl + 'orders/after-success-pay', {
+        data: payload,
+        token: getters.getToken
+      })
+    },
+    sendErrorPayLogs: async ({ getters }, payload) => {
+      return await apiFetch(config.apiUrl + 'orders/after-error-pay', {
+        data: payload,
+        token: getters.getToken
+      })
     }
   },
   mutations: {

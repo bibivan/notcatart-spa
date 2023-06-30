@@ -8,6 +8,21 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue')
+  },
+  {
+    path: '/pay-success',
+    name: 'paySuccess',
+    component: () => import(/* webpackChunkName: "paySuccess" */ '../views/PaySuccess.vue')
+  },
+  {
+    path: '/pay-error',
+    name: 'payError',
+    component: () => import(/* webpackChunkName: "payError" */ '../views/PayError.vue')
+  },
+  {
     path: '/privacy',
     name: 'privacy',
     // route level code-splitting
