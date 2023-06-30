@@ -3,7 +3,7 @@
   align-items: flex-start;
 
   @include portable {
-    flex-flow: column-reverse;
+    flex-flow: column;
     align-items: center;
   }
 
