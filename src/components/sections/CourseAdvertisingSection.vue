@@ -12,7 +12,7 @@
         </span>
         <br class="hide-desktop hide-mobile">создано <br class="hide-desktop hide-tablet">для тебя.
       </p>
-      <RouterLink :to="{ name: 'orderCourse' }" class="btn btn--bordered">Хочу</RouterLink>
+      <a href="https://yescatart.ru" target="_blank" class="btn btn--bordered">Хочу</a>
     </div>
     <div class="course-advertising__image"/>
   </section>
