@@ -51,7 +51,8 @@ export default defineComponent({
 
     const setResult = (data, fias) => {
       const deliveries = Object.values(data[0]?.delivery_types)
-      const courierDeliveryIds = [1, 4, 7, 22]
+      const courierDeliveryIds = [1, 4, 7]
+      // const courierDeliveryIds = [1, 4, 7, 22]
       // const postPickupDeliveryIds = [3, 5, 21]
 
       currentOrder.value.FIAS = fias
