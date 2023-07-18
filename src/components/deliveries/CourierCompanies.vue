@@ -40,7 +40,8 @@ export default defineComponent({
     watch(() => currentOrder.value.pickedCourier, val => {
       if (_.isEmpty(val)) return
 
-      const postCourierDeliveryIds = [7, 22]
+      // const postCourierDeliveryIds = [7, 22]
+      const postCourierDeliveryIds = [7]
       if (postCourierDeliveryIds.includes(val.delivery_id)) currentOrder.value.RU_POST_DELIVERY = true
 
       currentOrder.value.DELIVERY_PRICE = val.cost
