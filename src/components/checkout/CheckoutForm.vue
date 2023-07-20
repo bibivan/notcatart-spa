@@ -62,6 +62,9 @@
                 },
                 {
                   country_iso_code: 'AM'
+                },
+                {
+                  country_iso_code: 'RU'
                 }
               ]"
             />
@@ -130,6 +133,7 @@ export default defineComponent({
 
     const setAddressData = value => {
       currentOrder.value.fiases = [value.data.settlement_fias_id, value.data.city_fias_id, value.data.area_fias_id, value.data.region_fias_id]
+      currentOrder.value.postalCode = value.data?.postal_code
       currentOrder.value.ADDRESS = value.unrestricted_value
     }
 

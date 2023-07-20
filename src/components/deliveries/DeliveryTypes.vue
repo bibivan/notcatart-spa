@@ -55,7 +55,9 @@ export default defineComponent({
       // const courierDeliveryIds = [1, 4, 7, 22]
       // const postPickupDeliveryIds = [3, 5, 21]
 
-      currentOrder.value.FIAS = fias
+      // currentOrder.value.FIAS = fias
+      console.log(data)
+      currentOrder.value.FIAS = data.fias
       currentOrder.value.couriersServices = []
       currentOrder.value.pickupPoints = []
 
@@ -65,20 +67,34 @@ export default defineComponent({
       })
     }
 
-    const getDeliveries = async fiases => {
-      for (const fias of fiases) {
-        let response
-        if (fias) {
-          response = await store.dispatch('loadPickUps', {
-            fias,
-            ...currentOrder.value
-          })
-        }
-        if (response?.success) return setResult(response.data, fias)
-      }
+    // const getDeliveries = async fiases => {
+    //   for (const fias of fiases) {
+    //     let response
+    //     if (fias) {
+    //       response = await store.dispatch('loadPickUps', {
+    //         fias,
+    //         ...currentOrder.value
+    //       })
+    //     }
+    //     if (response?.success) return setResult(response.data, fias)
+    //   }
+    // }
+
+    // watch(() => currentOrder.value.fiases, value => {
+    //   getDeliveries(value)
+    // }, { deep: true })
+
+    const getDeliveries = postalCode => {
+      store.dispatch('loadPickUps', {
+        postalCode,
+        ...currentOrder.value
+      })
+        .then(res => {
+          if (res?.success) setResult(res.data, postalCode)
+        })
     }
 
-    watch(() => currentOrder.value.fiases, value => {
+    watch(() => currentOrder.value.postalCode, value => {
       getDeliveries(value)
     }, { deep: true })
 

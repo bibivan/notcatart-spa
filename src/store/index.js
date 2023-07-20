@@ -66,7 +66,8 @@ const store = createStore({
       return await apiFetch(config.apiUrl + 'pickup-sdt/get-pickups',
         {
           token: getters.getToken,
-          fias: payload.fias,
+          // fias: payload.fias,
+          index: payload.postalCode,
           payment_type: payload.PAYMENT_TYPE,
           company: 0, // 0 - физ.лицо, 1 - юр.лицо
           weight: payload.WEIGHT,
