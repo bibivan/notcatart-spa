@@ -53,6 +53,17 @@
               v-model:addressData="currentOrder.addressData"
               class="w-100"
               :checkFullAddress="currentOrder.COURIER_DELIVERY"
+              :locationRestriction="[
+                {
+                  country_iso_code: 'BY'
+                },
+                {
+                  country_iso_code: 'KZ'
+                },
+                {
+                  country_iso_code: 'AM'
+                }
+              ]"
             />
           </div>
         </div>
